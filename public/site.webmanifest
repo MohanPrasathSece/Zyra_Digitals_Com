@@ -1,0 +1,39 @@
+{
+    "name": "Zyra Digitals - Website Design & Development",
+    "short_name": "Zyra Digitals",
+    "description": "Premium website design and development company in Coimbatore. Professional web development, branding, and digital solutions.",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#000000",
+    "theme_color": "#000000",
+    "orientation": "portrait-primary",
+    "icons": [
+        {
+            "src": "/favicon.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "any maskable"
+        },
+        {
+            "src": "/favicon-32x32.png",
+            "sizes": "32x32",
+            "type": "image/png"
+        },
+        {
+            "src": "/favicon-16x16.png",
+            "sizes": "16x16",
+            "type": "image/png"
+        },
+        {
+            "src": "/apple-touch-icon.png",
+            "sizes": "180x180",
+            "type": "image/png"
+        }
+    ],
+    "categories": [
+        "business",
+        "design",
+        "development"
+    ],
+    "lang": "en-US"
+}

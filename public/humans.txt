@@ -1,0 +1,55 @@
+/* TEAM */
+Founder & Lead Developer: Mohan Prasath S
+Contact: zyradigitalsofficial [at] gmail.com
+Location: Coimbatore, Tamil Nadu, India
+LinkedIn: https://www.linkedin.com/company/zyra-digitals/
+Instagram: https://www.instagram.com/zyradigitals.co/
+
+/* SITE */
+Website: https://www.zyradigitals.com
+Standards: HTML5, CSS3, JavaScript, TypeScript, React
+Components: Vite, Tailwind CSS, Framer Motion, shadcn/ui
+Software: VS Code, Git, Figma, Adobe Creative Suite
+SEO: Advanced Schema.org, Optimized Meta Tags, Image Sitemap
+
+/* SERVICES */
+Website Design & Development
+Brand Identity & Strategy
+UI/UX Design
+SEO Optimization & Analytics
+Digital Growth & Marketing
+Hosting & Maintenance
+
+/* EXPERTISE */
+Custom Website Development
+E-commerce Solutions
+Healthcare & Medical Websites
+Corporate Branding
+Luxury & Premium Brands
+Responsive Web Design
+Progressive Web Apps
+WordPress & Elementor
+React & Next.js Applications
+
+/* RECOGNITION */
+Known as: Zyra Digitals, Zyra Digital, Zira Digitals
+Location: Coimbatore, Tamil Nadu, India
+Service Area: Global
+Industries: Healthcare, E-commerce, Consulting, Technology, Real Estate
+
+/* THANKS */
+To all our clients who trusted us with their digital presence.
+To the open-source community for amazing tools and frameworks.
+To every developer and designer who inspires us daily.
+
+                       _           _ _       _       
+                      | |         | (_)     | |      
+  _____   _ _ __ __ _| |__   __ _| |_ _ __ | |_ ___ 
+ |_  / | | | '__/ _` | '_ \ / _` | | | '_ \| __/ __|
+  / /| |_| | | | (_| | | | | (_| | | | |_) | |_\__ \
+ /___|\__, |_|  \__,_|_| |_|\__,_|_|_| .__/ \__|___/
+       __/ |                         | |            
+      |___/                          |_|            
+
+/* WEBSITE DESIGN & DEVELOPMENT COMPANY IN COIMBATORE */
+Building brands that matter. Creating websites that perform.

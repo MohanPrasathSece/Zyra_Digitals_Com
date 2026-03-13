@@ -1,0 +1,50 @@
+# Zyra Digitals - Website Design & Development Company
+# Allow all major search engines to crawl and index
+
+# Global Rules - Maximum Discoverability
+User-agent: *
+Allow: /
+Allow: /images/
+Allow: /assets/
+Allow: /*.css
+Allow: /*.js
+Disallow: /api/
+Disallow: /.git/
+Disallow: /node_modules/
+Crawl-delay: 0
+
+# Sitemaps - Enhanced Discovery
+Sitemap: https://www.zyradigitals.com/sitemap.xml
+Sitemap: https://www.zyradigitals.com/image-sitemap.xml
+
+# Preferred Domain
+Host: https://www.zyradigitals.com
+
+# Major Search Engine Specific Rules
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 0
+
+User-agent: Googlebot-Image
+Allow: /images/
+Allow: /*.png
+Allow: /*.jpg
+Allow: /*.jpeg
+Allow: /*.webp
+
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 0
+
+User-agent: Slurp
+Allow: /
+
+# Social Media Crawlers
+User-agent: facebookexternalhit
+Allow: /
+
+User-agent: Twitterbot
+Allow: /
+
+User-agent: LinkedInBot
+Allow: /

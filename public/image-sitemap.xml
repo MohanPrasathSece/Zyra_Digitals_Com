@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  
+  <!-- Homepage -->
+  <url>
+    <loc>https://www.zyradigitals.com/</loc>
+    <image:image>
+      <image:loc>https://www.zyradigitals.com/favicon.png</image:loc>
+      <image:caption>Zyra Digitals - Best Website Design & Development Agency</image:caption>
+      <image:title>Zyra Digitals Logo</image:title>
+    </image:image>
+  </url>
+
+  <!-- Portfolio Projects -->
+  <url>
+    <loc>https://www.zyradigitals.com/portfolio</loc>
+    <image:image>
+      <image:loc>https://www.zyradigitals.com/images/Portfolio_projects/precision.png</image:loc>
+      <image:caption>Precision Root Canal Therapy website - Healthcare web design and development by Zyra Digitals</image:caption>
+      <image:title>Precision Root Canal Therapy | Web Design Project</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.zyradigitals.com/images/Portfolio_projects/lumi.png</image:loc>
+      <image:caption>Lumi & Co luxury jewelry website - Premium e-commerce design by Zyra Digitals</image:caption>
+      <image:title>Lumi & Co | E-commerce Web Design</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.zyradigitals.com/images/Portfolio_projects/amzcoz/amzcoz.png</image:loc>
+      <image:caption>AmzCoz e-commerce growth platform - Professional business website development by Zyra Digitals</image:caption>
+      <image:title>AmzCoz | E-commerce Growth Platform</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.zyradigitals.com/images/Portfolio_projects/crowdverse/image.png</image:loc>
+      <image:caption>The Crowdverse platform - High-performance FinTech & AI analytics dashboard by Zyra Digitals</image:caption>
+      <image:title>The Crowdverse | AI & FinTech Analytics</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.zyradigitals.com/images/Portfolio_projects/seekbuylove/image.png</image:loc>
+      <image:caption>SeekBuyLove WordPress WooCommerce store - Seamless e-commerce shopping experience by Zyra Digitals</image:caption>
+      <image:title>SeekBuyLove | WooCommerce Clothing Store</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.zyradigitals.com/images/Portfolio_projects/launch&amp;close/image.png</image:loc>
+      <image:caption>Launch &amp; Close growth partner website - B2B SaaS strategy and execution by Zyra Digitals</image:caption>
+      <image:title>Launch &amp; Close | B2B SaaS Growth Partner</image:title>
+    </image:image>
+
+  </url>
+
+  <!-- Brand Logos -->
+  <url>
+    <loc>https://www.zyradigitals.com/</loc>
+    <image:image>
+      <image:loc>https://www.zyradigitals.com/images/brands/BCLogo.png</image:loc>
+      <image:caption>Client brand logo - Website design by Zyra Digitals</image:caption>
+      <image:title>Brand Client Logo</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.zyradigitals.com/images/brands/ajanta.png</image:loc>
+      <image:caption>Ajanta brand logo - Web development client by Zyra Digitals</image:caption>
+      <image:title>Ajanta Client Logo</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.zyradigitals.com/images/brands/crowdverse.png</image:loc>
+      <image:caption>Crowdverse brand logo - Digital agency client by Zyra Digitals</image:caption>
+      <image:title>Crowdverse Client Logo</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.zyradigitals.com/images/brands/femtricks.png</image:loc>
+      <image:caption>Femtricks brand logo - UI/UX design client by Zyra Digitals</image:caption>
+      <image:title>Femtricks Client Logo</image:title>
+    </image:image>
+  </url>
+
+</urlset>
