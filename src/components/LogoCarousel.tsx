@@ -29,7 +29,7 @@ export const LogoCarousel = ({ title = "Brands We've Empowered" }: LogoCarouselP
     return (
         <div className="mt-8 lg:mt-12 py-16 lg:py-40 bg-white overflow-hidden relative border-y border-gray-100">
             {/* Decorative center title */}
-            <div className="container mx-auto px-4 mb-12 lg:mb-20 text-center relative z-20">
+            <div className="container mx-auto px-4 mb-28 lg:mb-48 text-center relative z-20">
                 <span className="font-heading text-xs lg:text-sm font-bold tracking-[0.5em] uppercase text-gold mb-4 block">
                     Trusted By
                 </span>
