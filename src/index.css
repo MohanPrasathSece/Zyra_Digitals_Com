@@ -2,6 +2,22 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Sudden Paper Opening Animation */
+@keyframes suddenOpen {
+  0% {
+    transform: scale(0.1) rotate(180deg);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.1) rotate(90deg);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+  }
+}
+
 /* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
 All colors MUST be HSL.
 */

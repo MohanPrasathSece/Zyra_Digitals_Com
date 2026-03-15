@@ -138,6 +138,7 @@ const PageWrapper = ({ children }: { children: React.ReactNode }) => (
     animate={{ opacity: 1, y: 0 }}
     exit={{ opacity: 0, y: -10 }}
     transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+    className="mx-4 md:mx-0"
   >
     {children}
   </motion.div>

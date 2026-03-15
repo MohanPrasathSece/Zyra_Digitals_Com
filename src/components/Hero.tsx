@@ -40,7 +40,7 @@ export const Hero = () => {
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-24 md:pt-32 md:pb-24">
-      <Interactive3DHeroBackground />
+        <Interactive3DHeroBackground />
 
       {/* Background Pattern */}
       <div className="absolute inset-0 z-0 bg-background" />
@@ -76,13 +76,7 @@ export const Hero = () => {
         </div>
       </div>
 
-      {/* Scroll Indicator */}
-      <div className="absolute bottom-2 sm:bottom-10 left-1/2 transform -translate-x-1/2 z-10">
-        <div className="w-6 h-10 border-2 border-foreground/30 rounded-full flex items-start justify-center p-2">
-          <div className="w-1 h-3 bg-gold rounded-full animate-bounce" />
-        </div>
-      </div>
-    </section>
+      </section>
   );
 };
 

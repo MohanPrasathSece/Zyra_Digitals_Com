@@ -181,15 +181,10 @@ const Home = () => {
             </motion.div>
           </div>
 
-          {/* Mobile: Simple Minimal Layout */}
+          {/* Mobile: Simple Minimal Layout - No Container */}
           <div className="md:hidden space-y-6">
             {services.map((service, index) => (
-              <div
-                key={index}
-                className="bg-card border border-border rounded-2xl p-6"
-              >
-                <ServiceCard {...service} index={index} />
-              </div>
+              <ServiceCard key={index} {...service} index={index} />
             ))}
           </div>
 
@@ -206,7 +201,7 @@ const Home = () => {
             ))}
           </div>
 
-          <div className="text-center">
+          <div className="text-center mt-12">
             <Button variant="ghost-gold" size="lg" asChild>
               <Link to="/services">Explore Our Work</Link>
             </Button>

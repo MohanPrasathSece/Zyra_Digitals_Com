@@ -30,7 +30,7 @@ export const TechStack = () => {
             <div className="relative flex items-center justify-center min-h-[350px]">
                 {/* Slow Auto-Marquee Container */}
                 <motion.div
-                    className="flex gap-16 items-center whitespace-nowrap"
+                    className="flex gap-4 md:gap-8 lg:gap-12 items-center whitespace-nowrap"
                     animate={{
                         x: [0, -100 * technologies.length], // Move exactly one set of icons
                     }}
@@ -56,7 +56,7 @@ export const TechStack = () => {
 const TechIcon = ({ tech, index }: { tech: { name: string; logo: string }; index: number }) => {
     return (
         <motion.div
-            className="relative group flex flex-col items-center gap-4 px-6"
+            className="relative group flex flex-col items-center gap-1 px-2 md:px-4 lg:px-6"
             animate={{
                 y: [0, -80, 0, 80, 0], // Even bigger curves
             }}
@@ -71,12 +71,12 @@ const TechIcon = ({ tech, index }: { tech: { name: string; logo: string }; index
                 <img
                     src={tech.logo}
                     alt={tech.name}
-                    className="w-28 h-28 object-contain transition-all duration-500"
+                    className="w-16 h-16 md:w-20 md:h-20 lg:w-28 lg:h-28 object-contain transition-all duration-500"
                     title={tech.name}
                     loading="lazy"
                 />
             </div>
-            <span className="text-[11px] font-secondary font-bold text-foreground/40 uppercase tracking-[0.3em] opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            <span className="text-[8px] md:text-[10px] text-xs font-secondary font-bold text-foreground/40 uppercase tracking-[0.2em] opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                 {tech.name}
             </span>
         </motion.div>

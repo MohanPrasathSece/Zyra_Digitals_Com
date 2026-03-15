@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useCallback, useMemo } from "react";
 import { ChevronDown, HelpCircle } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -49,18 +49,45 @@ export const FAQ = ({
   faqs = defaultFAQs,
   className = ""
 }: FAQProps) => {
-  const [openItem, setOpenItem] = useState<string>("faq-1");
-
-  const toggleItem = (id: string) => {
-    setOpenItem(openItem === id ? "" : id);
-  };
+  const [openItem, setOpenItem] = useState<string>("");
+  
+  // Memoize toggle function to prevent unnecessary re-renders
+  const toggleItem = useCallback((id: string) => {
+    setOpenItem(prev => prev === id ? "" : id);
+  }, []);
+  
+  // Detect if device is mobile for performance optimizations
+  const isMobile = useMemo(() => {
+    if (typeof window === 'undefined') return false;
+    return window.innerWidth < 768;
+  }, []);
+  
+  // Optimized animation variants for mobile vs desktop
+  const animationVariants = useMemo(() => ({
+    container: {
+      initial: { opacity: 0, y: isMobile ? 10 : 20 },
+      animate: { opacity: 1, y: 0 },
+      transition: { duration: isMobile ? 0.3 : 0.5 }
+    },
+    item: {
+      initial: { opacity: 0, y: isMobile ? 10 : 20 },
+      animate: { opacity: 1, y: 0 },
+      transition: { duration: isMobile ? 0.2 : 0.3 }
+    },
+    content: {
+      initial: { opacity: 0 },
+      animate: { opacity: 1 },
+      exit: { opacity: 0 },
+      transition: { duration: isMobile ? 0.15 : 0.2 }
+    }
+  }), [isMobile]);
 
   return (
     <section id="faq" className={`py-24 relative overflow-hidden ${className}`}>
-      {/* Background Decorative Elements */}
+      {/* Background Decorative Elements - Simplified for mobile */}
       <div className="absolute top-0 left-0 w-full h-full pointer-events-none opacity-20">
-        <div className="absolute top-[-10%] right-[-10%] w-[40%] aspect-square rounded-full bg-gold/5 blur-[120px]" />
-        <div className="absolute bottom-[-10%] left-[-10%] w-[40%] aspect-square rounded-full bg-primary/5 blur-[120px]" />
+        <div className={`absolute top-[-10%] right-[-10%] rounded-full bg-gold/5 ${isMobile ? 'w-[30%] blur-[60px]' : 'w-[40%] blur-[120px]'}`} />
+        <div className={`absolute bottom-[-10%] left-[-10%] rounded-full bg-primary/5 ${isMobile ? 'w-[30%] blur-[60px]' : 'w-[40%] blur-[120px]'}`} />
       </div>
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -68,10 +95,8 @@ export const FAQ = ({
           {/* Section Header */}
           <div className="text-center mb-16">
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              {...animationVariants.container}
               viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
             >
               <div className="inline-flex items-center gap-2 bg-gold/10 text-gold px-4 py-1.5 rounded-full text-xs font-bold tracking-widest uppercase mb-4 border border-gold/20">
                 <HelpCircle size={14} />
@@ -87,52 +112,50 @@ export const FAQ = ({
           </div>
 
           {/* FAQ List */}
-          <div className="space-y-4">
+          <div className={`space-y-${isMobile ? '3' : '4'} max-w-3xl mx-auto`}>
             {faqs.map((faq, index) => {
               const isOpen = openItem === faq.id;
+              const itemDelay = isMobile ? 0 : index * 0.05;
 
               return (
                 <motion.div
                   key={faq.id}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
+                  {...animationVariants.item}
                   viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className={`group rounded-2xl border transition-all duration-300 ${isOpen
-                    ? "bg-card border-gold/30 shadow-xl shadow-gold/5"
-                    : "bg-white border-border hover:border-gold/20 hover:shadow-lg"
-                    }`}
+                  transition={{ ...animationVariants.item.transition, delay: itemDelay }}
+                  className={`border-b transition-all ${isMobile ? 'duration-200' : 'duration-300'} ${isOpen
+                    ? "border-gold pb-4"
+                    : "border-gray-200 pb-3 hover:border-gray-300"
+                  }`}
                 >
                   <button
                     onClick={() => toggleItem(faq.id)}
-                    className="w-full text-left p-6 sm:p-8 flex items-center justify-between gap-4"
+                    className={`w-full text-left flex items-center justify-between gap-4 py-3 ${isMobile ? 'px-2' : 'px-0'} group`}
+                    aria-expanded={isOpen}
+                    aria-controls={`faq-answer-${faq.id}`}
                   >
-                    <span className={`font-secondary text-lg sm:text-xl font-bold transition-colors duration-300 ${isOpen ? "text-gold" : "text-foreground group-hover:text-gold"
-                      }`}>
+                    <span className={`${isMobile ? 'text-base' : 'text-lg'} font-medium transition-colors ${isMobile ? 'duration-200' : 'duration-300'} ${isOpen 
+                      ? "text-gold" 
+                      : "text-gray-900 group-hover:text-gold"
+                    }`}>
                       {faq.question}
                     </span>
-                    <div className={`shrink-0 w-10 h-10 rounded-full flex items-center justify-center border transition-all duration-300 ${isOpen
-                      ? "bg-gold border-gold text-white rotate-180"
-                      : "bg-secondary/10 border-border text-foreground group-hover:border-gold/30 group-hover:text-gold"
-                      }`}>
-                      <ChevronDown size={20} />
-                    </div>
+                    
+                    <ChevronDown 
+                      size={isMobile ? 18 : 20} 
+                      className={`flex-shrink-0 transition-transform ${isMobile ? 'duration-200' : 'duration-300'} ${isOpen ? 'rotate-180 text-gold' : 'text-gray-400 group-hover:text-gold'}`}
+                    />
                   </button>
 
                   <AnimatePresence>
                     {isOpen && (
                       <motion.div
-                        initial={{ opacity: 0, height: 0 }}
-                        animate={{ opacity: 1, height: "auto" }}
-                        exit={{ opacity: 0, height: 0 }}
-                        transition={{ duration: 0.3, ease: "easeInOut" }}
-                        className="overflow-hidden"
+                        {...animationVariants.content}
+                        className={`overflow-hidden ${isMobile ? 'pt-3' : 'pt-4'}`}
+                        id={`faq-answer-${faq.id}`}
                       >
-                        <div className="px-6 pb-8 sm:px-8 sm:pb-10 pt-0">
-                          <div className="w-full h-px bg-gradient-to-r from-gold/20 to-transparent mb-6" />
-                          <p className="font-secondary text-muted-foreground leading-relaxed text-base sm:text-lg">
-                            {faq.answer}
-                          </p>
+                        <div className={`${isMobile ? 'text-sm' : 'text-base'} text-gray-600 leading-relaxed ${isMobile ? 'px-2' : 'px-0'}`}>
+                          {faq.answer}
                         </div>
                       </motion.div>
                     )}
@@ -145,10 +168,9 @@ export const FAQ = ({
           {/* Bottom CTA */}
           <motion.div
             className="text-center mt-16"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            {...animationVariants.container}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.4 }}
+            transition={{ ...animationVariants.container.transition, delay: isMobile ? 0.2 : 0.4 }}
           >
             <p className="font-secondary text-muted-foreground mb-6">
               Couldn't find what you're looking for?
