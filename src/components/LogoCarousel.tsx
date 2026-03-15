@@ -7,24 +7,27 @@ interface LogoCarouselProps {
 export const LogoCarousel = ({ title = "Brands We've Empowered" }: LogoCarouselProps) => {
     const brandLogos = [
         { name: "404", src: "/images/brands/404-logo-removebg-preview.png" },
-        { name: "BCLogo", src: "/images/brands/BCLogo.png" },
+        { name: "Blue & Black Logo", src: "/images/brands/Blue_and_Black_Minimalist_Brand_Logo-removebg-preview.png" },
         { name: "Ajanta", src: "/images/brands/ajanta.png" },
         { name: "Crowdverse", src: "/images/brands/crowdverse.png" },
         { name: "Ecom", src: "/images/brands/ecom.png" },
         { name: "Elevate", src: "/images/brands/elevate.png" },
         { name: "Femtricks", src: "/images/brands/femtricks.png" },
-        { name: "Lumi", src: "/images/brands/lumi.png" },
+        { name: "Happy Dental", src: "/images/brands/happydental_newlogo-removebg-preview.png" },
+        { name: "KPJ", src: "/images/brands/kpj_new_logo-removebg-preview.png" },
+        { name: "New Logo", src: "/images/brands/new_logo-removebg-preview.png" },
+        { name: "Nirvana", src: "/images/brands/nirvana.png" },
         { name: "Seek Buy Love", src: "/images/brands/seekbuylove.png" },
         { name: "Sevakai", src: "/images/brands/sevakai black.png" },
+        { name: "SKR", src: "/images/brands/skr_logo-removebg-preview.png" },
         { name: "Sky Logo", src: "/images/brands/skylogo.png" },
-        { name: "Stoneleaf", src: "/images/brands/stoneleaf.png" },
     ];
 
     // Duplicate logos for infinite effect
     const duplicatedLogos = [...brandLogos, ...brandLogos, ...brandLogos];
 
     return (
-        <div className="py-16 lg:py-40 bg-white overflow-hidden relative border-y border-gray-100">
+        <div className="mt-8 lg:mt-12 py-16 lg:py-40 bg-white overflow-hidden relative border-y border-gray-100">
             {/* Decorative center title */}
             <div className="container mx-auto px-4 mb-12 lg:mb-20 text-center relative z-20">
                 <span className="font-heading text-xs lg:text-sm font-bold tracking-[0.5em] uppercase text-gold mb-4 block">
@@ -43,7 +46,7 @@ export const LogoCarousel = ({ title = "Brands We've Empowered" }: LogoCarouselP
                 <motion.div
                     className="flex gap-3 lg:gap-14 items-center whitespace-nowrap px-4 lg:px-10"
                     animate={{
-                        x: [0, -2400], // Adjusted movement for the updated count
+                        x: [0, -3000], // Adjusted movement for the updated count
                     }}
                     transition={{
                         duration: 40,
