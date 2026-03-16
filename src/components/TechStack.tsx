@@ -1,4 +1,5 @@
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useEffect, useState, useRef } from "react";
 
 const technologies = [
     { name: "C", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-original.svg" },
@@ -22,63 +23,151 @@ const technologies = [
 ];
 
 export const TechStack = () => {
-    // Triple the array to ensure seamless infinite scroll
-    const duplicatedIcons = [...technologies, ...technologies, ...technologies];
+    const [isInView, setIsInView] = useState(false);
+    const [hasAnimated, setHasAnimated] = useState(false);
+    const sectionRef = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                if (entry.isIntersecting && !hasAnimated) {
+                    setIsInView(true);
+                    setHasAnimated(true);
+                }
+            },
+            { threshold: 0.3 }
+        );
+
+        if (sectionRef.current) {
+            observer.observe(sectionRef.current);
+        }
+
+        return () => {
+            if (sectionRef.current) {
+                observer.unobserve(sectionRef.current);
+            }
+        };
+    }, [hasAnimated]);
 
     return (
-        <section className="py-10 bg-white overflow-hidden relative">
-            <div className="relative flex items-center justify-center min-h-[350px]">
-                {/* Slow Auto-Marquee Container */}
-                <motion.div
-                    className="flex gap-4 md:gap-8 lg:gap-12 items-center whitespace-nowrap"
-                    animate={{
-                        x: [0, -100 * technologies.length], // Move exactly one set of icons
-                    }}
-                    transition={{
-                        duration: 60, // Slow scroll
-                        repeat: Infinity,
-                        ease: "linear",
-                    }}
-                >
-                    {duplicatedIcons.map((tech, index) => (
-                        <TechIcon key={`${tech.name}-${index}`} tech={tech} index={index} />
-                    ))}
-                </motion.div>
-            </div>
+        <>
+            {/* Invisible trigger element */}
+            <div ref={sectionRef} className="absolute top-1/2 left-0 w-full h-1 pointer-events-none" />
 
-            {/* Edge masks for smooth fade */}
-            <div className="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-white via-white/80 to-transparent z-10 pointer-events-none" />
-            <div className="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-white via-white/80 to-transparent z-10 pointer-events-none" />
-        </section>
+            {/* Full-page tech rainstorm overlay */}
+            <div className="fixed inset-0 z-50 pointer-events-none">
+                {technologies.map((tech, index) => (
+                    <FullPageFallingTechIcon 
+                        key={tech.name} 
+                        tech={tech} 
+                        index={index}
+                        isInView={isInView}
+                    />
+                ))}
+            </div>
+        </>
     );
 };
 
-const TechIcon = ({ tech, index }: { tech: { name: string; logo: string }; index: number }) => {
+const FullPageFallingTechIcon = ({ 
+    tech, 
+    index, 
+    isInView
+}: { 
+    tech: { name: string; logo: string }; 
+    index: number;
+    isInView: boolean;
+}) => {
+    // Completely random coordinates and physics
+    const startX = Math.random() * 100; // Completely random starting position
+    const endX = Math.random() * 100; // Random ending position
+    const fallDelay = Math.random() * 2; // Random delay up to 2 seconds
+    
+    // Random bounce sequence with unpredictable collision points
+    const generateRandomFallSequence = () => {
+        const sequence = [-100]; // Start way above viewport
+        
+        // Generate 6-8 random collision points throughout page height
+        const numBounces = 6 + Math.floor(Math.random() * 3); // 6-8 bounces
+        
+        for (let i = 0; i < numBounces; i++) {
+            const collisionHeight = Math.random() * 800 + 100; // Random heights between 100-900px
+            sequence.push(collisionHeight);
+            
+            // Random bounce back up (or sometimes continue down)
+            const bounceBack = collisionHeight - (Math.random() * 50 + 20);
+            sequence.push(bounceBack);
+        }
+        
+        // Final landing at random bottom position
+        sequence.push(900 + Math.random() * 200);
+        
+        return sequence;
+    };
+
+    const fallSequence = generateRandomFallSequence();
+    const bounceDuration = 8 + Math.random() * 4; // Random duration 8-12 seconds
+
+    // Random rotation sequence
+    const generateRandomRotation = () => {
+        const rotations = [0];
+        for (let i = 0; i < fallSequence.length - 1; i++) {
+            rotations.push(Math.random() * 720 - 360); // Random rotations
+        }
+        return rotations;
+    };
+
+    const rotationSequence = generateRandomRotation();
+
+    // Random scale sequence for chaotic deformation
+    const generateRandomScale = () => {
+        const scales = [1];
+        for (let i = 0; i < fallSequence.length - 1; i++) {
+            scales.push(0.5 + Math.random() * 0.8); // Random scales between 0.5-1.3
+        }
+        return scales;
+    };
+
+    const scaleSequence = generateRandomScale();
+
     return (
         <motion.div
-            className="relative group flex flex-col items-center gap-1 px-2 md:px-4 lg:px-6"
-            animate={{
-                y: [0, -80, 0, 80, 0], // Even bigger curves
+            className="absolute"
+            initial={{
+                left: `${startX}%`,
+                top: '-100px',
+                scale: 1,
+                rotate: 0,
             }}
+            animate={isInView ? {
+                top: fallSequence,
+                left: fallSequence.map(() => `${Math.random() * 100}%`), // Random horizontal drift
+                scale: scaleSequence,
+                rotate: rotationSequence,
+            } : {}}
             transition={{
-                duration: 10, // Slower, more majestic wave
-                repeat: Infinity,
-                ease: [0.45, 0, 0.55, 1], // Custom cubic-bezier for a perfect sine-wave feel
-                delay: index * 0.5, // Adjusted stagger for better wave formation
+                duration: bounceDuration,
+                delay: fallDelay,
+                ease: "easeOut",
+                times: fallSequence.map((_, i) => i / (fallSequence.length - 1)),
             }}
         >
-            <div className="flex items-center justify-center transition-all duration-500 hover:scale-150">
-                <img
-                    src={tech.logo}
-                    alt={tech.name}
-                    className="w-16 h-16 md:w-20 md:h-20 lg:w-28 lg:h-28 object-contain transition-all duration-500"
-                    title={tech.name}
-                    loading="lazy"
-                />
+            <div className="relative group">
+                <div className="flex items-center justify-center transition-all duration-300 hover:scale-110">
+                    <div className="w-12 h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 rounded-full bg-white/20 backdrop-blur-sm shadow-lg flex items-center justify-center overflow-hidden border border-white/50">
+                        <img
+                            src={tech.logo}
+                            alt={tech.name}
+                            className="w-8 h-8 md:w-10 md:h-10 lg:w-12 lg:h-12 object-contain"
+                            title={tech.name}
+                            loading="lazy"
+                        />
+                    </div>
+                </div>
+                <span className="absolute -bottom-5 left-1/2 transform -translate-x-1/2 text-[10px] font-secondary font-bold text-white/80 uppercase tracking-[0.1em] opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
+                    {tech.name}
+                </span>
             </div>
-            <span className="text-[8px] md:text-[10px] text-xs font-secondary font-bold text-foreground/40 uppercase tracking-[0.2em] opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                {tech.name}
-            </span>
         </motion.div>
     );
 };

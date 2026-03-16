@@ -10,7 +10,7 @@ import { SEO } from "@/components/SEO";
 import { useScrollToTop } from "@/hooks/useScrollToTop";
 import { motion } from "framer-motion";
 import { LogoCarousel } from "@/components/LogoCarousel";
-import { TechStack } from "@/components/TechStack";
+import { ServicesTicker } from "@/components/ServicesTicker";
 
 const Home = () => {
   useScrollToTop();
@@ -164,7 +164,7 @@ const Home = () => {
       {/* Services Preview - Enhanced for SEO */}
       <section id="services-preview" className="py-24 bg-background overflow-hidden">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
+          <div className="text-center mb-32">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -182,14 +182,14 @@ const Home = () => {
           </div>
 
           {/* Mobile: Simple Minimal Layout - No Container */}
-          <div className="md:hidden space-y-6">
+          <div className="md:hidden space-y-6 mt-8">
             {services.map((service, index) => (
               <ServiceCard key={index} {...service} index={index} />
             ))}
           </div>
 
           {/* Desktop: Animated Grid */}
-          <div className="hidden md:grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+          <div className="hidden md:grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12 mt-8">
             {services.map((service, index) => (
               <AnimatedSection
                 key={index}
@@ -209,9 +209,8 @@ const Home = () => {
         </div>
       </section>
 
-      <AnimatedSection animation="fade-up">
-        <TechStack />
-      </AnimatedSection>
+      {/* Services Ticker */}
+      <ServicesTicker />
 
       <AnimatedSection animation="fade-up">
         <FAQ
@@ -221,6 +220,9 @@ const Home = () => {
           className="bg-gradient-to-br from-background via-primary/5 to-gold/5"
         />
       </AnimatedSection>
+
+      {/* Tech Stack Global Animation */}
+      
 
       {/* CTA Section */}
       <AnimatedSection animation="slide-up" className="py-20 bg-white text-black">
