@@ -5,6 +5,26 @@ import { Input } from "./ui/input";
 import { cn } from "@/lib/utils";
 
 // ─────────────────────────────────────────────
+// TYPEWRITING EFFECT
+// ─────────────────────────────────────────────
+const TypewriterText = ({ text, speed = 50 }: { text: string; speed?: number }) => {
+    const [displayedText, setDisplayedText] = useState("");
+    const [currentIndex, setCurrentIndex] = useState(0);
+
+    useEffect(() => {
+        if (currentIndex < text.length) {
+            const timeout = setTimeout(() => {
+                setDisplayedText(prev => prev + text[currentIndex]);
+                setCurrentIndex(prev => prev + 1);
+            }, speed);
+            return () => clearTimeout(timeout);
+        }
+    }, [currentIndex, text, speed]);
+
+    return <span>{displayedText}</span>;
+};
+
+// ─────────────────────────────────────────────
 // TYPES
 // ─────────────────────────────────────────────
 interface Message {
@@ -117,6 +137,7 @@ export const Chatbot = () => {
     const [step, setStep] = useState<ChatStep>("INITIAL");
     const [userInput, setUserInput] = useState("");
     const [isTyping, setIsTyping] = useState(false);
+    const [showIntro, setShowIntro] = useState(false);
     const [lead, setLead] = useState({
         name: "", service: "", platform: "", websiteType: "", projectDetails: "", timeline: "", email: "", phone: ""
     });
@@ -188,7 +209,13 @@ export const Chatbot = () => {
 
     // Open chat
     useEffect(() => {
-        if (isOpen && messages.length === 0) startSession();
+        if (isOpen && messages.length === 0) {
+            setShowIntro(true);
+            setTimeout(() => {
+                setShowIntro(false);
+                startSession();
+            }, 3500);
+        }
     }, [isOpen]);
 
     const addMsg = (msg: Omit<Message, "id" | "timestamp">) =>
@@ -577,6 +604,17 @@ export const Chatbot = () => {
 
                         {/* Messages */}
                         <div ref={scrollRef} className="flex-grow overflow-y-auto px-4 py-5 space-y-5 bg-white scrollbar-hide">
+                            {/* Typewriting Intro Message */}
+                            {showIntro && (
+                                <div className="mr-auto">
+                                    <div className="bg-[#F3F4F6] px-4 py-3.5 rounded-[1.4rem] rounded-tl-sm shadow-sm w-fit">
+                                        <div className="text-[14px] sm:text-[15px] text-[#1F2937] leading-[1.55]">
+                                            <TypewriterText text="👋 Hello! I'm Zyra, your AI assistant! I'm here to help you build amazing websites, branding, and digital solutions. Let's create something awesome together! 🚀" speed={40} />
+                                        </div>
+                                    </div>
+                                </div>
+                            )}
+
                             {messages.map((msg) => (
                                 <div
                                     key={msg.id}
