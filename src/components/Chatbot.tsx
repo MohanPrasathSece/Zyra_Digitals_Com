@@ -98,65 +98,13 @@ const isValidEmail = (email: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
 // ORB COMPONENT
 // ─────────────────────────────────────────────
 const ChatOrb = ({ onClick }: { onClick: () => void }) => {
-    const [eye, setEye] = useState({ x: 0, y: 0 });
-    const [blinking, setBlinking] = useState(false);
-
-    useEffect(() => {
-        const onMove = (e: MouseEvent) => {
-            const dx = (e.clientX - window.innerWidth + 100) / 100;
-            const dy = (e.clientY - window.innerHeight + 100) / 100;
-            setEye({ x: Math.max(-3, Math.min(3, dx * 3)), y: Math.max(-3, Math.min(3, dy * 3)) });
-        };
-        window.addEventListener("mousemove", onMove);
-        return () => window.removeEventListener("mousemove", onMove);
-    }, []);
-
-    // Blink every 5 seconds
-    useEffect(() => {
-        const interval = setInterval(() => {
-            setBlinking(true);
-            setTimeout(() => setBlinking(false), 150); // blink lasts 150ms
-        }, 5000);
-        return () => clearInterval(interval);
-    }, []);
-
     return (
-        <div className="fixed bottom-5 right-5 sm:bottom-10 sm:right-10 z-[60] flex flex-col items-end gap-2 pointer-events-none">
-            <motion.div
-                initial={{ opacity: 0, x: 20 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: 10 }}
-                className="bg-white px-3 py-1.5 sm:px-4 sm:py-2 rounded-2xl shadow-md border border-gray-100 text-gray-700 text-xs sm:text-sm font-medium mb-1"
-            >
-                Hey! How can I help? 👋
-            </motion.div>
-            <motion.div
-                initial={{ scale: 0, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                exit={{ scale: 0, opacity: 0 }}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                onClick={onClick}
-                className="w-16 h-16 sm:w-20 sm:h-20 rounded-full shadow-[0_10px_40px_-10px_rgba(0,0,0,0.3)] cursor-pointer overflow-hidden pointer-events-auto relative"
-            >
-                <div className="absolute inset-0 bg-gradient-to-br from-white via-white to-zinc-200" />
-                <div className="absolute top-2 left-2 w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-white/80 blur-[6px] sm:blur-[8px]" />
-                <div className="absolute inset-0 flex items-center justify-center gap-2.5 sm:gap-4">
-                    <div className="relative" style={{ transform: `translate(${eye.x}px, ${eye.y}px)` }}>
-                        <div
-                            className="w-2 sm:w-2.5 rounded-full bg-black/90 transition-all duration-75"
-                            style={{ height: blinking ? "2px" : "20px" }}
-                        />
-                    </div>
-                    <div className="relative" style={{ transform: `translate(${eye.x}px, ${eye.y}px)` }}>
-                        <div
-                            className="w-2 sm:w-2.5 rounded-full bg-black/90 transition-all duration-75"
-                            style={{ height: blinking ? "2px" : "20px" }}
-                        />
-                    </div>
-                </div>
-            </motion.div>
-        </div>
+        <img 
+            src="/ai-image.png" 
+            alt="AI Assistant" 
+            className="fixed bottom-3 right-3 sm:bottom-6 sm:right-6 z-[60] w-24 h-24 sm:w-28 sm:h-28 cursor-pointer object-cover"
+            onClick={onClick}
+        />
     );
 };
 
@@ -593,9 +541,7 @@ export const Chatbot = () => {
     return (
         <>
             {/* Orb */}
-            <AnimatePresence>
-                {!isOpen && <ChatOrb onClick={() => setIsOpen(true)} />}
-            </AnimatePresence>
+            {!isOpen && <ChatOrb onClick={() => setIsOpen(true)} />}
 
             {/* Chat Window */}
             <AnimatePresence>
@@ -609,11 +555,11 @@ export const Chatbot = () => {
                         {/* Header */}
                         <div className="bg-[#B8860B] px-4 py-3 sm:px-5 sm:py-4 flex items-center justify-between shrink-0">
                             <div className="flex items-center gap-3">
-                                <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-white flex items-center justify-center border border-white/10 shadow-sm relative">
-                                    <div className="w-1 h-2 sm:w-1.5 sm:h-3 rounded-full bg-black/80 mx-[1px] sm:mx-[2px]" />
-                                    <div className="w-1 h-2 sm:w-1.5 sm:h-3 rounded-full bg-black/80 mx-[1px] sm:mx-[2px]" />
-                                    <span className="absolute -bottom-0.5 -right-0.5 w-2.5 h-2.5 sm:w-3 sm:h-3 bg-green-400 rounded-full border-2 border-white" />
-                                </div>
+                                <img 
+                                    src="/ai-image.png" 
+                                    alt="AI Assistant" 
+                                    className="w-12 h-12 sm:w-14 sm:h-14 rounded-full object-cover"
+                                />
                                 <div>
                                     <h3 className="text-white font-bold text-[15px] sm:text-[17px] leading-none">Zyra</h3>
                                     <p className="text-white/70 text-[10px] sm:text-[11px] mt-0.5">Digital Assistant · Online</p>
