@@ -1,120 +1,172 @@
 import { motion } from "framer-motion";
-import { Quote } from "lucide-react";
-import { useState, useEffect } from "react";
+import { Fragment } from "react";
+import React from "react";
+import avatar1 from "@/assets_testimonial/avatar-1.png";
+import avatar2 from "@/assets_testimonial/avatar-2.png";
+import avatar3 from "@/assets_testimonial/avatar-3.png";
+import avatar4 from "@/assets_testimonial/avatar-4.png";
+import avatar5 from "@/assets_testimonial/avatar-5.png";
+import avatar6 from "@/assets_testimonial/avatar-6.png";
+import avatar7 from "@/assets_testimonial/avatar-7.png";
+import avatar8 from "@/assets_testimonial/avatar-8.png";
+import avatar9 from "@/assets_testimonial/avatar-9.png";
 
-interface Testimonial {
-    quote: string;
-    author: string;
-    role: string;
-    avatarInitial: string;
-}
-
-const testimonials: Testimonial[] = [
-    {
-        quote:
-            "Absolutely mind blowing work and very cooperative as well. Great rates and work ethic—never faced any issue and the responses were always on time. Loved working with Zyra Digitals for the MVP of my startup!",
-        author: "Aryan Kapoor",
-        role: "Founder, Nexus",
-        avatarInitial: "A",
-    },
-    {
-        quote:
-            "Zyra Digitals are the best. They completed the website within the deadline and delivered a clean, professional, and user-friendly experience. I highly recommend them to anyone looking to create premium websites.",
-        author: "James Wilson",
-        role: "Marketing Head, Elevate",
-        avatarInitial: "J",
-    },
-    {
-        quote:
-            "This agency understands every detail and made my website and my friend's website at a very reasonable price, which looks very premium. Highly recommended!",
-        author: "Ishaan Verma",
-        role: "CEO, Zentry",
-        avatarInitial: "I",
-    },
+const testimonials = [
+  {
+    text: "Designed my startup with utmost care. Mohan delivered a professional look on time with exceptional attention to every detail.",
+    imageSrc: avatar1,
+    name: "Avinash",
+    username: "@avinash_tech",
+  },
+  {
+    text: "Absolutely mind blowing work by Zyra Digitals! Mohan is very cooperative and maintains a great work ethic throughout.",
+    imageSrc: avatar2,
+    name: "Devang Sankhla",
+    username: "@devangsankhla",
+  },
+  {
+    text: "Mohan is the best! Zyra Digitals completed our professional website within the deadline with clean, user-friendly pages.",
+    imageSrc: avatar3,
+    name: "Arjun S",
+    username: "@arjun_s",
+  },
+  {
+    text: "Zyra Digitals understands every detail. They made my website and my friend's site with a level of care that Mohan is known for.",
+    imageSrc: avatar4,
+    name: "Adnan Tamboli",
+    username: "@adnantamboli",
+  },
+  {
+    text: "The website for my dental agency is EXCELLENT. Mohan made it visually strong, interactive, and perfectly structured.",
+    imageSrc: avatar5,
+    name: "Linda",
+    username: "@linda_dental",
+  },
+  {
+    text: "Excellent website designer. Mohan is very knowledgeable and Zyra Digitals provided great communication throughout the project.",
+    imageSrc: avatar6,
+    name: "Ashish Patel",
+    username: "@ashish_patel",
+  },
+  {
+    text: "I absolutely loved the outcome of my Website by Zyra Digitals. Mohan was very patient with my preferences and vision.",
+    imageSrc: avatar7,
+    name: "Janice Ida",
+    username: "@janice_ida",
+  },
+  {
+    text: "Extremely satisfied with Zyra Digitals. Mohan's speed and professionalism for my website design was top-notch!",
+    imageSrc: avatar1,
+    name: "Avinash",
+    username: "@avinash_design",
+  },
+  {
+    text: "No delay in responses. Loved working with Zyra Digitals for my startup MVP and seeing it come to life exactly as imagined!",
+    imageSrc: avatar2,
+    name: "Devang Sankhla",
+    username: "@devang_mvp",
+  },
+  {
+    text: "Everything looks very premium and Mohan's pricing was very reasonable. We couldn't be happier with our new brand identity.",
+    imageSrc: avatar4,
+    name: "Adnan Tamboli",
+    username: "@adnan_premium",
+  },
+  {
+    text: "Truly grateful for Zyra Digitals. Mohan is professional and friendly, crafting high-quality work with a premium feel.",
+    imageSrc: avatar5,
+    name: "Linda",
+    username: "@linda_pro",
+  },
+  {
+    text: "Very professional and fast. Zyra Digitals made my website much better than I expected, delivering way ahead of schedule!",
+    imageSrc: avatar6,
+    name: "Ashish Patel",
+    username: "@ashish_fast",
+  },
 ];
 
-export const Testimonials = () => {
-    const [currentIndex, setCurrentIndex] = useState(0);
+const firstColumn = testimonials.slice(0, 4);
+const secondColumn = testimonials.slice(4, 8);
+const thirdColumn = testimonials.slice(8, 12);
 
-    useEffect(() => {
-        const timer = setInterval(() => {
-            setCurrentIndex((prev) => (prev + 1) % testimonials.length);
-        }, 8000);
-        return () => clearInterval(timer);
-    }, []);
-
-    return (
-        <section className="py-24 bg-secondary/10 overflow-hidden">
-            <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="text-center mb-16">
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                    >
-                        <h2 className="font-heading text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground mb-6">
-                            What Our <span className="text-gold">Clients Say</span>
-                        </h2>
-                        <p className="font-secondary text-lg text-muted-foreground max-w-2xl mx-auto">
-                            Don't just take our word for it. Hear from the visionary founders and businesses we've helped grow.
-                        </p>
-                    </motion.div>
-                </div>
-
-                <div className="max-w-4xl mx-auto relative">
-                    <motion.div
-                        key={currentIndex}
-                        initial={{ opacity: 0, x: 20 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        exit={{ opacity: 0, x: -20 }}
-                        transition={{ duration: 0.5 }}
-                        className="bg-card border border-border rounded-[2rem] p-8 sm:p-12 shadow-2xl relative overflow-hidden"
-                    >
-                        {/* Background Decorative Elements */}
-                        <div className="absolute top-0 right-0 w-32 h-32 bg-gold/5 rounded-full -translate-y-1/2 translate-x-1/2 blur-3xl"></div>
-                        <div className="absolute bottom-0 left-0 w-32 h-32 bg-gold/5 rounded-full translate-y-1/2 -translate-x-1/2 blur-3xl"></div>
-
-                        <div className="flex flex-col items-center text-center relative z-10">
-                            <div className="w-16 h-16 bg-gold/10 rounded-full flex items-center justify-center mb-8 border border-gold/20">
-                                <Quote className="text-gold" size={32} />
-                            </div>
-
-                            <blockquote className="font-heading text-xl sm:text-2xl md:text-3xl leading-relaxed text-foreground mb-10 font-medium italic">
-                                "{testimonials[currentIndex].quote}"
-                            </blockquote>
-
-                            <div className="flex items-center gap-4 text-left">
-                                <div className="w-14 h-14 bg-gradient-to-br from-gold to-gold/60 rounded-full flex items-center justify-center shadow-lg border-2 border-white/10">
-                                    <span className="font-heading text-xl font-bold text-white">
-                                        {testimonials[currentIndex].avatarInitial}
-                                    </span>
-                                </div>
-                                <div>
-                                    <h4 className="font-heading text-lg font-bold text-foreground">
-                                        {testimonials[currentIndex].author}
-                                    </h4>
-                                    <p className="font-secondary text-sm text-gold font-medium">
-                                        {testimonials[currentIndex].role}
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </motion.div>
-
-                    {/* Dots Indicator */}
-                    <div className="flex justify-center gap-3 mt-10">
-                        {testimonials.map((_, index) => (
-                            <button
-                                key={index}
-                                onClick={() => setCurrentIndex(index)}
-                                className={`h-2.5 rounded-full transition-all duration-300 ${index === currentIndex ? "bg-gold w-8" : "bg-gold/20 w-2.5 hover:bg-gold/40"
-                                    }`}
-                                aria-label={`Switch to testimonial ${index + 1}`}
-                            />
-                        ))}
+const TestimonialColumn = (props: {
+  className?: string;
+  testimonials: typeof testimonials;
+  duration?: number;
+}) => (
+  <div className={props.className}>
+    <motion.div
+      animate={{
+        translateY: "-50%",
+      }}
+      transition={{
+        duration: props.duration || 10,
+        repeat: Infinity,
+        ease: "linear",
+        repeatType: "loop",
+      }}
+      className="flex flex-col gap-6 pb-6 mt-10 "
+    >
+      {[...new Array(2)].fill(0).map((_, index) => {
+        return (
+          <React.Fragment key={index}>
+            {props.testimonials.map(({ text, imageSrc, name, username }) => (
+              <div key={username} className="card">
+                <div className="text-gray-700 text-[15px] leading-relaxed">{text}</div>
+                <div className="flex items-center gap-3 mt-5">
+                  <img
+                    src={imageSrc}
+                    width={40}
+                    height={40}
+                    alt={name}
+                    className="h-10 w-10 rounded-full object-cover"
+                  />
+                  <div className="flex flex-col">
+                    <div className="tracking-tight font-medium leading-5 text-gray-900">
+                      {name}
                     </div>
+                    <div className="leading-5 tracking-tight text-gray-500 text-sm">{username}</div>
+                  </div>
                 </div>
-            </div>
-        </section>
-    );
+              </div>
+            ))}
+          </React.Fragment>
+        );
+      })}
+    </motion.div>
+  </div>
+);
+
+export const Testimonials = () => {
+  return (
+    <section className="bg-white py-24">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="section-wrapper text-center mb-24 md:mb-32">
+          <div className="flex justify-center">
+            <div className="tag border-gold/30 text-gold bg-gold/5 mb-6 text-sm font-bold uppercase tracking-widest">Our Track Record</div>
+          </div>
+          <h2 className="section-title mt-8 leading-tight">
+            Stories of Success And <br /> <span className="text-gold">Digital Growth</span>
+          </h2>
+          <p className="section-description mt-8 mx-auto max-w-4xl text-[17px]">
+            We build exceptional websites, powerful brands, and high-performance growth systems. As the leading web development company in Coimbatore, we ensure your brand stands out.
+          </p>
+        </div>
+        <div className="flex justify-center gap-6 [mask-image:linear-gradient(to_bottom,transparent,black_15%,black_85%,transparent)] max-h-[738px] overflow-hidden mt-10">
+          <TestimonialColumn testimonials={firstColumn} duration={12}/>
+          <TestimonialColumn
+            className="hidden md:block"
+            testimonials={secondColumn}
+            duration={18}
+          />
+          <TestimonialColumn
+            className="hidden lg:block"
+            testimonials={thirdColumn}
+            duration={15}
+          />
+        </div>
+      </div>
+    </section>
+  );
 };

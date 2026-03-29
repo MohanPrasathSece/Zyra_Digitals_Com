@@ -1,6 +1,7 @@
 import { useState, useCallback, useMemo } from "react";
 import { ChevronDown, HelpCircle } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { Button } from "@/components/ui/button";
 
 interface FAQItem {
   id: string;
@@ -105,7 +106,7 @@ export const FAQ = ({
               <h2 className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6">
                 {title}
               </h2>
-              <p className="font-secondary text-lg text-muted-foreground max-w-2xl mx-auto">
+              <p className="section-description">
                 {subtitle}
               </p>
             </motion.div>
@@ -175,12 +176,14 @@ export const FAQ = ({
             <p className="font-secondary text-muted-foreground mb-6">
               Couldn't find what you're looking for?
             </p>
-            <button
+            <Button 
+              variant="gold" 
+              size="lg" 
               onClick={() => window.location.href = '/contact'}
-              className="px-8 py-4 bg-black text-white rounded-full font-bold hover:bg-gold transition-all duration-300 shadow-lg hover:shadow-gold/20"
+              className="h-14 px-10 rounded-md font-bold shadow-lg hover:shadow-gold/20"
             >
               Get in Touch with Us
-            </button>
+            </Button>
           </motion.div>
         </div>
       </div>
@@ -189,4 +192,3 @@ export const FAQ = ({
 };
 
 export default FAQ;
-

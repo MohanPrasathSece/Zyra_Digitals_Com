@@ -11,6 +11,7 @@ import { useScrollToTop } from "@/hooks/useScrollToTop";
 import { motion } from "framer-motion";
 import { LogoCarousel } from "@/components/LogoCarousel";
 import { ServicesTicker } from "@/components/ServicesTicker";
+import { Testimonials } from "@/components/Testimonials";
 
 const Home = () => {
   useScrollToTop();
@@ -170,11 +171,11 @@ const Home = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
             >
-              <h2 className="font-heading text-4xl sm:text-5xl lg:text-7xl font-bold text-foreground mb-6 leading-tight">
+              <h2 className="section-title mb-6 leading-tight">
                 Everything Your <br />
                 <span className="text-gold">Digital Presence</span> Needs
               </h2>
-              <p className="font-secondary text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto">
+              <p className="section-description max-w-2xl mx-auto">
                 We build exceptional websites, powerful brands, and high-performance growth systems.
                 As the leading <Link to="/services" className="text-gold hover:underline">web development company in Coimbatore</Link>, we ensure your brand stands out.
               </p>
@@ -210,7 +211,10 @@ const Home = () => {
       </section>
 
       {/* Services Ticker */}
-      <ServicesTicker />
+      {/* <ServicesTicker /> */}
+
+      {/* Testimonials Section */}
+      <Testimonials />
 
       <AnimatedSection animation="fade-up">
         <FAQ
@@ -220,9 +224,6 @@ const Home = () => {
           className="bg-gradient-to-br from-background via-primary/5 to-gold/5"
         />
       </AnimatedSection>
-
-      {/* Tech Stack Global Animation */}
-      
 
       {/* CTA Section */}
       <AnimatedSection animation="slide-up" className="py-20 bg-white text-black">
