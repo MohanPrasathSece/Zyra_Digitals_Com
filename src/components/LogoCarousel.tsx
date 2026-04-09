@@ -23,8 +23,9 @@ export const LogoCarousel = ({ title = "Brands We've Empowered" }: LogoCarouselP
         { name: "Sky Logo", src: "/images/brands/skylogo.png" },
     ];
 
-    // Duplicate logos for infinite effect
-    const duplicatedLogos = [...brandLogos, ...brandLogos, ...brandLogos];
+    // Split logos into two different groups for the two rows
+    const row1Logos = brandLogos.slice(0, 8);
+    const row2Logos = brandLogos.slice(8);
 
     return (
         <div className="mt-8 lg:mt-12 py-16 lg:py-40 bg-white overflow-hidden relative border-y border-gray-100">
@@ -38,31 +39,59 @@ export const LogoCarousel = ({ title = "Brands We've Empowered" }: LogoCarouselP
                 </h2>
             </div>
 
-            <div className="relative">
+            <div className="relative space-y-8 lg:space-y-12">
                 {/* Edge masks for smooth fade */}
-                <div className="absolute inset-y-0 left-0 w-20 lg:w-32 bg-gradient-to-r from-white via-white/80 to-transparent z-10 pointer-events-none" />
-                <div className="absolute inset-y-0 right-0 w-20 lg:w-32 bg-gradient-to-l from-white via-white/80 to-transparent z-10 pointer-events-none" />
+                <div className="absolute inset-y-0 left-0 w-20 lg:w-48 bg-gradient-to-r from-white via-white/40 to-transparent z-10 pointer-events-none" />
+                <div className="absolute inset-y-0 right-0 w-20 lg:w-48 bg-gradient-to-l from-white via-white/40 to-transparent z-10 pointer-events-none" />
 
+                {/* First Row: Moving Left */}
                 <motion.div
-                    className="flex gap-3 lg:gap-14 items-center whitespace-nowrap px-4 lg:px-10"
+                    className="flex gap-4 lg:gap-8 items-center whitespace-nowrap"
                     animate={{
-                        x: [0, -3000], // Adjusted movement for the updated count
+                        x: [0, -1800],
                     }}
                     transition={{
-                        duration: 40,
+                        duration: 20,
                         repeat: Infinity,
                         ease: "linear",
                     }}
                 >
-                    {duplicatedLogos.map((brand, index) => (
+                    {[...row1Logos, ...row1Logos, ...row1Logos, ...row1Logos].map((brand, index) => (
                         <div
-                            key={index}
-                            className="flex items-center justify-center min-w-[150px] lg:min-w-[300px] h-24 lg:h-40 opacity-100 transition-all duration-500 hover:scale-110 group"
+                            key={`row1-${index}`}
+                            className="flex items-center justify-center min-w-[100px] lg:min-w-[180px] h-16 lg:h-28 opacity-100 transition-all duration-500 hover:scale-110"
                         >
                             <img
                                 src={brand.src}
-                                alt={`${brand.name} logo - Trusted by Zyra Digitals`}
-                                className="max-h-12 lg:max-h-28 max-w-[100px] lg:max-w-[240px] object-contain drop-shadow-[0_4px_25px_rgba(0,0,0,0.06)] transition-all"
+                                alt={brand.name}
+                                className="max-h-10 lg:max-h-20 max-w-[100px] lg:max-w-[160px] object-contain transition-all cursor-pointer"
+                                loading="lazy"
+                            />
+                        </div>
+                    ))}
+                </motion.div>
+
+                {/* Second Row: Moving Right */}
+                <motion.div
+                    className="flex gap-4 lg:gap-8 items-center whitespace-nowrap"
+                    animate={{
+                        x: [-1800, 0],
+                    }}
+                    transition={{
+                        duration: 25,
+                        repeat: Infinity,
+                        ease: "linear",
+                    }}
+                >
+                    {[...row2Logos, ...row2Logos, ...row2Logos, ...row2Logos].map((brand, index) => (
+                        <div
+                            key={`row2-${index}`}
+                            className="flex items-center justify-center min-w-[100px] lg:min-w-[180px] h-16 lg:h-28 opacity-100 transition-all duration-500 hover:scale-110"
+                        >
+                            <img
+                                src={brand.src}
+                                alt={brand.name}
+                                className="max-h-10 lg:max-h-20 max-w-[100px] lg:max-w-[160px] object-contain transition-all cursor-pointer"
                                 loading="lazy"
                             />
                         </div>

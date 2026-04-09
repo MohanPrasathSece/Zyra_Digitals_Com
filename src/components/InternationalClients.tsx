@@ -77,10 +77,10 @@ export function InternationalClients() {
               <Globe
                 markers={markers}
                 arcs={arcs}
-                markerColor={[197/255, 160/255, 89/255]} // Match gold theme
-                baseColor={[0.1, 0.1, 0.1]}
-                glowColor={[197/255, 160/255, 89/255]}
-                dark={1}
+                markerColor={[1, 0.7, 0.2]} // Vibrant markers
+                baseColor={[0.1, 0.4, 0.8]} // Real Blue Ocean
+                glowColor={[1, 1, 1]} // White Atmosphere glow
+                dark={0} // Brighter, realistic look
                 mapBrightness={6}
                 markerSize={0.06}
               />
