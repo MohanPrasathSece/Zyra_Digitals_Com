@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { useScrollToTop } from "@/hooks/useScrollToTop";
 import { AnimatedSection } from "@/components/AnimatedSection";
 import { SEO } from "@/components/SEO";
+import MouseEffects from "@/components/mouseEffects";
 
 const Services = () => {
   useScrollToTop();
@@ -125,10 +126,11 @@ const Services = () => {
         schema={servicesSchema}
         publishedTime="2025-01-01T00:00:00Z"
         modifiedTime={new Date().toISOString()}
-        section="Services"
       />
-
-
+      
+      {/* Mouse Effects */}
+      <MouseEffects />
+      
       {/* Hero Section */}
       <AnimatedSection animation="fade-up" className="py-24 bg-gradient-to-br from-background to-secondary/30">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">

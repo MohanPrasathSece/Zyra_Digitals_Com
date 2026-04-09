@@ -41,6 +41,9 @@ const Contact = () => {
         schema={contactSchema}
         publishedTime="2025-01-01T00:00:00Z"
         modifiedTime={new Date().toISOString()}
+      />
+      
+      <SEO
         section="Contact"
       />
 

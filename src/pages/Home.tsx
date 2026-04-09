@@ -8,6 +8,7 @@ import { AnimatedSection } from "@/components/AnimatedSection";
 import { Typewriter } from "@/components/Typewriter";
 import { SEO } from "@/components/SEO";
 import { useScrollToTop } from "@/hooks/useScrollToTop";
+import MouseEffects from "@/components/mouseEffects";
 import { motion } from "framer-motion";
 import { LogoCarousel } from "@/components/LogoCarousel";
 import { ServicesTicker } from "@/components/ServicesTicker";
@@ -154,9 +155,12 @@ const Home = () => {
         publishedTime="2025-01-01T00:00:00Z"
         modifiedTime={new Date().toISOString()}
       />
-
+      
       {/* Hero Section */}
       <Hero />
+
+      {/* Mouse Effects */}
+      <MouseEffects />
 
       <AnimatedSection animation="fade-up">
         <LogoCarousel />

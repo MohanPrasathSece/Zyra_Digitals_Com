@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { useState, useEffect, useRef } from "react";
-import { Interactive3DHeroBackground } from "@/components/Interactive3DHeroBackground";
+import Ballpit from "@/components/hero-animation";
 
 export const Hero = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -48,10 +48,18 @@ export const Hero = () => {
   return (
     <>
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-24 md:pt-32 md:pb-24">
-        <Interactive3DHeroBackground />
+        <div className="absolute inset-0 z-0">
+          <Ballpit
+            count={100}
+            gravity={0.01}
+            friction={0.9975}
+            wallBounce={0.95}
+            followCursor={false}
+          />
+        </div>
 
         {/* Background Pattern */}
-        <div className="absolute inset-0 z-0 bg-background" />
+        <div className="absolute inset-0 z-0 bg-background/30" />
 
         {/* Content */}
         <div
