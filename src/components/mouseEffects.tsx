@@ -185,8 +185,8 @@ const MouseEffects = () => {
       blobType="circle"
       fillColor="#8e7c0b"
       trailCount={3}
-      sizes={[60, 125, 75]}
-      innerSizes={[20, 35, 25]}
+      sizes={[40, 80, 60]}
+      innerSizes={[15, 25, 20]}
       innerColor="rgba(255,255,255,0.8)"
       opacities={[0.6, 0.6, 0.6]}
       shadowColor="rgba(0,0,0,0.75)"
