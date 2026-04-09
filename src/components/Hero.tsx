@@ -48,7 +48,7 @@ export const Hero = () => {
   return (
     <>
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-24 md:pt-32 md:pb-24">
-        <div className="absolute inset-0 z-0">
+        <div className="absolute inset-0 z-0 hidden md:block">
           <Ballpit
             count={100}
             gravity={0.01}

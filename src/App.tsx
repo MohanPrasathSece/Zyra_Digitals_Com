@@ -8,6 +8,7 @@ import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { Analytics } from "@vercel/analytics/react";
 import { Preloader } from "@/components/Preloader";
+import { AestheticReveal } from "@/components/AestheticReveal";
 import { motion, AnimatePresence } from "framer-motion";
 
 import { Chatbot } from "@/components/Chatbot";
@@ -37,40 +38,32 @@ const ScrollToTop = () => {
 };
 
 const App = () => {
-  const [isLoading, setIsLoading] = useState(() => {
-    // Only show preloader on first visit, not on page navigation
-    const hasVisited = sessionStorage.getItem('has-visited');
+  const [showReveal, setShowReveal] = useState(() => {
+    const hasVisited = sessionStorage.getItem('has-visited-reveal');
     if (!hasVisited) {
-      sessionStorage.setItem('has-visited', 'true');
+      sessionStorage.setItem('has-visited-reveal', 'true');
       return true;
     }
     return false;
   });
-
-  useEffect(() => {
-    // Prevent scrolling while loading
-    if (isLoading) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "auto";
-    }
-  }, [isLoading]);
 
   return (
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
         <Toaster />
         <Sonner />
-        {isLoading && <Preloader onComplete={() => setIsLoading(false)} />}
+        
+        {showReveal && <AestheticReveal />}
+        
         <BrowserRouter>
           <Analytics />
           <ScrollToTop />
           <div className="flex flex-col min-h-screen">
-            {!isLoading && <Navbar />}
+            <Navbar />
             <main className="flex-grow">
               <Suspense fallback={<LoadingFallback />}>
                 <AnimatePresence mode="wait">
-                  <Routes location={location} key={location.pathname}>
+                  <Routes>
                     <Route
                       path="/"
                       element={
@@ -123,7 +116,7 @@ const App = () => {
                 </AnimatePresence>
               </Suspense>
             </main>
-            {!isLoading && <Footer />}
+            <Footer />
             <Chatbot />
           </div>
         </BrowserRouter>
@@ -134,10 +127,10 @@ const App = () => {
 
 const PageWrapper = ({ children }: { children: React.ReactNode }) => (
   <motion.div
-    initial={{ opacity: 0, y: 10 }}
-    animate={{ opacity: 1, y: 0 }}
-    exit={{ opacity: 0, y: -10 }}
-    transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+    initial={{ opacity: 0 }}
+    animate={{ opacity: 1 }}
+    exit={{ opacity: 0 }}
+    transition={{ duration: 0.8, ease: "easeOut", delay: 0.4 }}
     className="mx-4 md:mx-0"
   >
     {children}

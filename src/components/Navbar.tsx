@@ -5,20 +5,34 @@ import { Menu, X } from "lucide-react";
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const [visible, setVisible] = useState(true)
+  const [lastScrollY, setLastScrollY] = useState(0)
   const location = useLocation()
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 20)
+      const currentScrollY = window.scrollY
+      
+      // Hide if scrolling down and not at the very top
+      if (currentScrollY > lastScrollY && currentScrollY > 100) {
+        setVisible(false)
+      } else {
+        setVisible(true)
+      }
+      
+      setScrolled(currentScrollY > 20)
+      setLastScrollY(currentScrollY)
     }
-    window.addEventListener('scroll', handleScroll)
+    
+    window.addEventListener('scroll', handleScroll, { passive: true })
     return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
+  }, [lastScrollY])
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 flex justify-center ${scrolled ? 'pt-4' : 'pt-0'
-        }`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 flex justify-center ${
+        scrolled ? 'pt-4' : 'pt-0'
+      } ${visible ? 'translate-y-0' : '-translate-y-full'}`}
     >
       <div
         className={`transition-all duration-500 flex items-center justify-between transition-all duration-500

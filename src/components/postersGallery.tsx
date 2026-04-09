@@ -110,7 +110,7 @@ void main() {
   vec3 newpos = position;
   float offset = (dot(distortionAxis, position) + norm / 2.) / norm;
   float localprogress = clamp(
-    (fract(uPosition * 5.0 * 0.01) - 0.01 * uDistortion * offset) / (1. - 0.01 * uDistortion),
+    ((uPosition * 5.0 * 0.01) - 0.01 * uDistortion * offset) / (1. - 0.01 * uDistortion),
     0.,
     2.
   );
@@ -205,7 +205,6 @@ class Media {
 
   program!: OGLProgram;
   plane!: OGLMesh;
-  extra = 0;
   padding = 0;
   height = 0;
   heightTotal = 0;
@@ -244,8 +243,8 @@ class Media {
   createShader() {
     const texture = new Texture(this.gl, { generateMipmaps: false });
     this.program = new Program(this.gl, {
-      depthTest: false,
-      depthWrite: false,
+      depthTest: true,
+      depthWrite: true,
       fragment: fragmentShader,
       vertex: vertexShader,
       uniforms: {
@@ -295,30 +294,19 @@ class Media {
     }
     this.setScale();
 
-    this.padding = 5;
+    this.padding = this.plane.scale.y * 1.0;
     this.height = this.plane.scale.y + this.padding;
     this.heightTotal = this.height * this.length;
     this.y = -this.heightTotal / 2 + (this.index + 0.5) * this.height;
   }
 
   update(scroll: ScrollState) {
-    this.plane.position.y = this.y - scroll.current - this.extra;
+    this.plane.position.y = this.y - scroll.current;
     const position = map(this.plane.position.y, -this.viewport.height, this.viewport.height, 5, 15);
 
     this.program.uniforms.uPosition.value = position;
     this.program.uniforms.uTime.value += 0.04;
     this.program.uniforms.uSpeed.value = scroll.current;
-
-    const planeHeight = this.plane.scale.y;
-    const viewportHeight = this.viewport.height;
-    const topEdge = this.plane.position.y + planeHeight / 2;
-    const bottomEdge = this.plane.position.y - planeHeight / 2;
-
-    if (topEdge < -viewportHeight / 2) {
-      this.extra -= this.heightTotal;
-    } else if (bottomEdge > viewportHeight / 2) {
-      this.extra += this.heightTotal;
-    }
   }
 }
 
@@ -364,8 +352,8 @@ class Canvas {
     this.distortion = distortion;
     this.scroll = {
       ease: scrollEase,
-      current: 0,
-      target: 0,
+      current: -9999, // Will be set appropriately below
+      target: -9999,
       last: 0
     };
     this.cameraFov = cameraFov;
@@ -427,6 +415,9 @@ class Canvas {
           distortion: this.distortion
         })
     );
+    
+    // Set initial scroll to first item
+    this.scroll.current = this.scroll.target = -this.medias[0].heightTotal / 2 + this.medias[0].height / 2;
   }
 
   createPreloader() {
@@ -479,7 +470,7 @@ class Canvas {
   }
 
   onWheel(e: WheelEvent) {
-    this.scroll.target += e.deltaY * 0.005;
+    this.scroll.target += e.deltaY * 0.0025; // Adjusted to slow down the 1-second rapid changing
   }
 
   update() {
@@ -492,24 +483,10 @@ class Canvas {
 
   addEventListeners() {
     window.addEventListener('resize', this.onResize);
-    window.addEventListener('wheel', this.onWheel);
-    window.addEventListener('mousedown', this.onTouchDown);
-    window.addEventListener('mousemove', this.onTouchMove);
-    window.addEventListener('mouseup', this.onTouchUp);
-    window.addEventListener('touchstart', this.onTouchDown as EventListener);
-    window.addEventListener('touchmove', this.onTouchMove as EventListener);
-    window.addEventListener('touchend', this.onTouchUp as EventListener);
   }
 
   destroy() {
     window.removeEventListener('resize', this.onResize);
-    window.removeEventListener('wheel', this.onWheel);
-    window.removeEventListener('mousedown', this.onTouchDown);
-    window.removeEventListener('mousemove', this.onTouchMove);
-    window.removeEventListener('mouseup', this.onTouchUp);
-    window.removeEventListener('touchstart', this.onTouchDown as EventListener);
-    window.removeEventListener('touchmove', this.onTouchMove as EventListener);
-    window.removeEventListener('touchend', this.onTouchUp as EventListener);
   }
 }
 
@@ -562,25 +539,33 @@ export default function FlyingPosters({
   useEffect(() => {
     if (!canvasRef.current) return;
 
-    const canvasEl = canvasRef.current;
+    const handleScroll = () => {
+      if (instanceRef.current && containerRef.current) {
+        const instance = instanceRef.current;
+        const parent = containerRef.current.closest('section');
+        
+        if (!parent) return;
 
-    const handleWheel = (e: WheelEvent) => {
-      e.preventDefault();
-      if (instanceRef.current) {
-        instanceRef.current.onWheel(e);
+        const rect = parent.getBoundingClientRect();
+        const scrollRange = rect.height - window.innerHeight;
+        
+        // Progress exactly from 0 (top of section hits viewport top) to 1 (bottom hits viewport bottom)
+        const progress = Math.max(0, Math.min(1, -rect.top / scrollRange));
+        
+        const height = instance.medias?.[0]?.height || 20;
+        const heightTotal = instance.medias?.[0]?.heightTotal || 100;
+        const minScroll = -heightTotal / 2 + height / 2;
+        const maxScroll = heightTotal / 2 - height / 2;
+        
+        instance.scroll.target = minScroll + progress * (maxScroll - minScroll);
       }
     };
 
-    const handleTouchMove = (e: TouchEvent) => {
-      e.preventDefault();
-    };
-
-    canvasEl.addEventListener('wheel', handleWheel, { passive: false });
-    canvasEl.addEventListener('touchmove', handleTouchMove, { passive: false });
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll(); // Trigger instantly
 
     return () => {
-      canvasEl.removeEventListener('wheel', handleWheel);
-      canvasEl.removeEventListener('touchmove', handleTouchMove);
+      window.removeEventListener('scroll', handleScroll);
     };
   }, []);
 
