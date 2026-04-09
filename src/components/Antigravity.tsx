@@ -219,7 +219,12 @@ const Antigravity: React.FC<AntigravityProps> = (props) => {
       <Suspense fallback={
         <div className="absolute inset-0 bg-gradient-to-br from-background via-secondary/20 to-gold/10 opacity-30" />
       }>
-        <Canvas camera={{ position: [0, 0, 50], fov: 35 }}>
+        <Canvas 
+          camera={{ position: [0, 0, 50], fov: 35 }} 
+          style={{ pointerEvents: 'none' }} 
+          eventSource={typeof document !== 'undefined' ? document.body : undefined}
+          eventPrefix="client"
+        >
           <AntigravityInner {...props} />
         </Canvas>
       </Suspense>

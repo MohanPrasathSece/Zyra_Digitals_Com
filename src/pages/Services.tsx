@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import { useScrollToTop } from "@/hooks/useScrollToTop";
 import { AnimatedSection } from "@/components/AnimatedSection";
 import { SEO } from "@/components/SEO";
-import MouseEffects from "@/components/mouseEffects";
 
 const Services = () => {
   useScrollToTop();
@@ -128,8 +127,6 @@ const Services = () => {
         modifiedTime={new Date().toISOString()}
       />
       
-      {/* Mouse Effects */}
-      <MouseEffects />
       
       {/* Hero Section */}
       <AnimatedSection animation="fade-up" className="py-24 bg-gradient-to-br from-background to-secondary/30">

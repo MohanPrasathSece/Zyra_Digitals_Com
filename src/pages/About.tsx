@@ -6,7 +6,6 @@ import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { useScrollToTop } from "@/hooks/useScrollToTop";
-import MouseEffects from "@/components/mouseEffects";
 
 const About = () => {
   useScrollToTop();
@@ -93,9 +92,6 @@ const About = () => {
         modifiedTime={new Date().toISOString()}
       />
       
-      {/* Mouse Effects */}
-      <MouseEffects />
-
 
       {/* Hero Section - Full Screen Banner */}
       <section className="min-h-screen bg-background relative overflow-hidden">

@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { ProjectCard } from "@/components/ProjectCard";
 import { Button } from "@/components/ui/button";
-import { Quote, ChevronRight, ChevronLeft, ExternalLink, ArrowRight, X } from "lucide-react";
+import { Quote, ChevronRight, ChevronLeft, ExternalLink, ArrowRight, X, ChevronDown } from "lucide-react";
 import { useScrollToTop } from "@/hooks/useScrollToTop";
 import { AnimatedSection } from "@/components/AnimatedSection";
 import { Link } from "react-router-dom";
@@ -9,6 +9,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { SEO } from "@/components/SEO";
 import { Testimonials } from "@/components/Testimonials";
 import Antigravity from "@/components/Antigravity";
+import FlyingPosters from "@/components/postersGallery";
 
 const Portfolio = (): JSX.Element => {
   useScrollToTop();
@@ -302,9 +303,10 @@ const Portfolio = (): JSX.Element => {
             magnetRadius={8}
             ringRadius={9}
             waveSpeed={0.3}
-            particleSize={1.8}
+            particleSize={0.8}
             color="#C5A059"
-            fieldStrength={12}
+            fieldStrength={10}
+            autoAnimate={true}
           />
         </div>
 
@@ -482,8 +484,54 @@ const Portfolio = (): JSX.Element => {
         </div>
       </div>
 
+      {/* Flying Posters Gallery */}
+      <AnimatedSection animation="fade-up" className="py-20 bg-background border-t border-border/50">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 mb-12">
+          <div className="max-w-4xl mx-auto text-center">
+            <div className="inline-flex items-center gap-2 bg-gold/10 rounded-full px-4 py-2 mb-6">
+              <span className="font-secondary text-sm text-gold font-medium">Visual Artistry</span>
+            </div>
+            <h2 className="font-heading text-3xl sm:text-5xl font-bold text-foreground mb-6">
+              Banners & <span className="text-gold">Poster</span> Designs
+            </h2>
+            <p className="font-secondary text-lg text-muted-foreground max-w-2xl mx-auto">
+              A curated collection of visually striking branding materials, banners, and poster designs crafted with precision. Scroll down to explore.
+            </p>
+          </div>
+        </div>
+
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="w-full lg:w-[600px] h-[600px] mx-auto border border-border/50 rounded-2xl relative overflow-hidden bg-background shadow-xl">
+            <FlyingPosters 
+              items={[
+                "https://picsum.photos/500/500?grayscale",
+                "https://picsum.photos/600/600?grayscale",
+                "https://picsum.photos/400/400?grayscale"
+              ]}
+              planeWidth={320}
+              planeHeight={320}
+              distortion={3}
+              scrollEase={0.01}
+              cameraFov={45}
+              cameraZ={20}
+            />
+          </div>
+        </div>
+
+        {/* Scroll down button */}
+        <div className="mt-12 mb-4 flex justify-center">
+          <Button variant="outline" size="icon" asChild className="rounded-full animate-bounce w-14 h-14 border-border hover:border-gold hover:text-gold transition-colors">
+            <a href="#testimonials" aria-label="Scroll to testimonials section">
+              <ChevronDown size={24} />
+            </a>
+          </Button>
+        </div>
+      </AnimatedSection>
+
       {/* Testimonials Section */}
-      <Testimonials />
+      <div id="testimonials">
+        <Testimonials />
+      </div>
 
       {/* CTA Section */}
       <AnimatedSection animation="slide-up" className="py-20 bg-background">
