@@ -8,7 +8,8 @@ import { AnimatedSection } from "@/components/AnimatedSection";
 import { Typewriter } from "@/components/Typewriter";
 import { SEO } from "@/components/SEO";
 import { useScrollToTop } from "@/hooks/useScrollToTop";
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
 import { LogoCarousel } from "@/components/LogoCarousel";
 import { ServicesTicker } from "@/components/ServicesTicker";
 import { Testimonials } from "@/components/Testimonials";
@@ -166,7 +167,7 @@ const Home = () => {
       {/* Services Preview - Enhanced for SEO */}
       <section id="services-preview" className="py-24 bg-background overflow-hidden">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-32">
+          <div className="text-center mb-16">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -183,15 +184,7 @@ const Home = () => {
             </motion.div>
           </div>
 
-          {/* Mobile: Simple Minimal Layout - No Container */}
-          <div className="md:hidden space-y-6 mt-8">
-            {services.map((service, index) => (
-              <ServiceCard key={index} {...service} index={index} />
-            ))}
-          </div>
-
-          {/* Desktop: Animated Grid */}
-          <div className="hidden md:grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12 mt-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
             {services.map((service, index) => (
               <AnimatedSection
                 key={index}
@@ -210,12 +203,6 @@ const Home = () => {
           </div>
         </div>
       </section>
-
-      {/* Services Ticker */}
-      {/* <ServicesTicker /> */}
-
-      {/* International Clients Section */}
-      <InternationalClients />
 
       {/* Testimonials Section */}
       <Testimonials />

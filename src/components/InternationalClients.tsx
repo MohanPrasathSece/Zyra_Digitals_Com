@@ -77,11 +77,11 @@ export function InternationalClients() {
               <Globe
                 markers={markers}
                 arcs={arcs}
-                markerColor={[1, 0.7, 0.2]} // Vibrant markers
-                baseColor={[0.1, 0.4, 0.8]} // Real Blue Ocean
-                glowColor={[1, 1, 1]} // White Atmosphere glow
-                dark={0} // Brighter, realistic look
-                mapBrightness={6}
+                markerColor={[197/255, 160/255, 89/255]} // Luxury Gold Markers
+                baseColor={[0.85, 0.85, 0.85]} // Pure White/Light Grey Base
+                glowColor={[0.95, 0.95, 0.95]} // Minimalist White Glow
+                dark={0} // White mode
+                mapBrightness={8}
                 markerSize={0.06}
               />
             </motion.div>

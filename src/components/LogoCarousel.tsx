@@ -59,12 +59,12 @@ export const LogoCarousel = ({ title = "Brands We've Empowered" }: LogoCarouselP
                     {[...row1Logos, ...row1Logos, ...row1Logos, ...row1Logos].map((brand, index) => (
                         <div
                             key={`row1-${index}`}
-                            className="flex items-center justify-center min-w-[100px] lg:min-w-[180px] h-16 lg:h-28 opacity-100 transition-all duration-500 hover:scale-110"
+                            className="flex items-center justify-center min-w-[140px] lg:min-w-[180px] h-20 lg:h-28 opacity-100 transition-all duration-500 hover:scale-110"
                         >
                             <img
                                 src={brand.src}
                                 alt={brand.name}
-                                className="max-h-10 lg:max-h-20 max-w-[100px] lg:max-w-[160px] object-contain transition-all cursor-pointer"
+                                className="max-h-14 lg:max-h-20 max-w-[120px] lg:max-w-[160px] object-contain transition-all cursor-pointer"
                                 loading="lazy"
                             />
                         </div>
@@ -86,12 +86,12 @@ export const LogoCarousel = ({ title = "Brands We've Empowered" }: LogoCarouselP
                     {[...row2Logos, ...row2Logos, ...row2Logos, ...row2Logos].map((brand, index) => (
                         <div
                             key={`row2-${index}`}
-                            className="flex items-center justify-center min-w-[100px] lg:min-w-[180px] h-16 lg:h-28 opacity-100 transition-all duration-500 hover:scale-110"
+                            className="flex items-center justify-center min-w-[140px] lg:min-w-[180px] h-20 lg:h-28 opacity-100 transition-all duration-500 hover:scale-110"
                         >
                             <img
                                 src={brand.src}
                                 alt={brand.name}
-                                className="max-h-10 lg:max-h-20 max-w-[100px] lg:max-w-[160px] object-contain transition-all cursor-pointer"
+                                className="max-h-14 lg:max-h-20 max-w-[120px] lg:max-w-[160px] object-contain transition-all cursor-pointer"
                                 loading="lazy"
                             />
                         </div>
