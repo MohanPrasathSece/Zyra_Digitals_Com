@@ -4,6 +4,7 @@ import path from "path";
 import { componentTagger } from "lovable-tagger";
 
 // https://vitejs.dev/config/
+// Trigger restart to flush Vite cache
 export default defineConfig(({ mode }) => ({
   server: {
     host: "::",

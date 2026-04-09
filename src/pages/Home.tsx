@@ -8,7 +8,6 @@ import { AnimatedSection } from "@/components/AnimatedSection";
 import { Typewriter } from "@/components/Typewriter";
 import { SEO } from "@/components/SEO";
 import { useScrollToTop } from "@/hooks/useScrollToTop";
-import MouseEffects from "@/components/mouseEffects";
 import { motion } from "framer-motion";
 import { LogoCarousel } from "@/components/LogoCarousel";
 import { ServicesTicker } from "@/components/ServicesTicker";
@@ -158,9 +157,6 @@ const Home = () => {
       
       {/* Hero Section */}
       <Hero />
-
-      {/* Mouse Effects */}
-      <MouseEffects />
 
       <AnimatedSection animation="fade-up">
         <LogoCarousel />

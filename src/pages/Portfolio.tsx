@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { SEO } from "@/components/SEO";
 import { Testimonials } from "@/components/Testimonials";
-import MouseEffects from "@/components/mouseEffects";
+import Antigravity from "@/components/Antigravity";
 
 const Portfolio = (): JSX.Element => {
   useScrollToTop();
@@ -289,18 +289,23 @@ const Portfolio = (): JSX.Element => {
         modifiedTime={new Date().toISOString()}
         section="Portfolio"
       />
-      
-      {/* Mouse Effects */}
-      <MouseEffects />
 
       {/* Hero Section - Reverted to Full Screen Banner */}
       <AnimatedSection animation="fade-up" className="min-h-screen bg-gradient-to-br from-background via-secondary/20 to-gold/10 relative overflow-hidden">
         {/* Background Pattern */}
         <div className="absolute inset-0 bg-[url('/images/pattern.svg')] opacity-5"></div>
 
-        {/* Antigravity Effect - Temporarily Disabled Due to React Three Fiber Compatibility */}
-        <div className="absolute inset-0 bg-gradient-to-br from-background via-secondary/20 to-gold/10 opacity-20">
-          {/* Antigravity component will be re-enabled once React Three Fiber compatibility is fixed */}
+        {/* Antigravity Effect */}
+        <div className="absolute inset-0 z-0">
+          <Antigravity
+            count={300}
+            magnetRadius={8}
+            ringRadius={9}
+            waveSpeed={0.3}
+            particleSize={1.8}
+            color="#C5A059"
+            fieldStrength={12}
+          />
         </div>
 
         {/* Floating Elements - Restored Gold */}
