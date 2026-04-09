@@ -12,6 +12,7 @@ import { motion } from "framer-motion";
 import { LogoCarousel } from "@/components/LogoCarousel";
 import { ServicesTicker } from "@/components/ServicesTicker";
 import { Testimonials } from "@/components/Testimonials";
+import { InternationalClients } from "@/components/InternationalClients";
 
 const Home = () => {
   useScrollToTop();
@@ -212,6 +213,9 @@ const Home = () => {
 
       {/* Services Ticker */}
       {/* <ServicesTicker /> */}
+
+      {/* International Clients Section */}
+      <InternationalClients />
 
       {/* Testimonials Section */}
       <Testimonials />
