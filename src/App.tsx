@@ -9,6 +9,7 @@ import { Footer } from "@/components/Footer";
 import { Analytics } from "@vercel/analytics/react";
 import { Preloader } from "@/components/Preloader";
 import { AestheticReveal } from "@/components/AestheticReveal";
+import { InterestingLoader } from "@/components/InterestingLoader";
 import { motion, AnimatePresence } from "framer-motion";
 
 import { Chatbot } from "@/components/Chatbot";
@@ -23,9 +24,7 @@ const NotFound = lazy(() => import("./pages/NotFound"));
 const queryClient = new QueryClient();
 
 const LoadingFallback = () => (
-  <div className="min-h-screen flex items-center justify-center">
-    <div className="w-8 h-8 border-4 border-gold border-t-transparent rounded-full animate-spin" />
-  </div>
+  <InterestingLoader />
 );
 
 // Scroll to top on route change
