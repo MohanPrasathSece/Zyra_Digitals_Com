@@ -3,11 +3,12 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { useState, useEffect, useRef } from "react";
 import Ballpit from "@/components/hero-animation";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 export const Hero = () => {
   const [isVisible, setIsVisible] = useState(false);
-  const [showAnimation, setShowAnimation] = useState(true);
   const heroRef = useRef<HTMLDivElement>(null);
+  const isMobile = useIsMobile();
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -30,13 +31,6 @@ export const Hero = () => {
     };
   }, []);
 
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setShowAnimation(false);
-    }, 4000); // 4 second animation
-    return () => clearTimeout(timer);
-  }, []);
-
   // Make hero visible immediately since it's the first section
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -48,15 +42,17 @@ export const Hero = () => {
   return (
     <>
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-24 md:pt-32 md:pb-24">
-        <div className="absolute inset-0 z-0 hidden md:block">
-          <Ballpit
-            count={100}
-            gravity={0.01}
-            friction={0.9975}
-            wallBounce={0.95}
-            followCursor={false}
-          />
-        </div>
+        {!isMobile && (
+          <div className="absolute inset-0 z-0 hidden md:block">
+            <Ballpit
+              count={100}
+              gravity={0.01}
+              friction={0.9975}
+              wallBounce={0.95}
+              followCursor={false}
+            />
+          </div>
+        )}
 
         {/* Background Pattern */}
         <div className="absolute inset-0 z-0 bg-background/30" />
@@ -96,3 +92,4 @@ export const Hero = () => {
     </>
   );
 };
+
