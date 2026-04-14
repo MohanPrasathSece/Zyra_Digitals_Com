@@ -175,7 +175,7 @@ export const Chatbot = () => {
             answer: "Our SEO service includes keyword research, on-page optimization, technical SEO, and monthly reporting to help your business rank higher on Google."
         },
         {
-            keywords: ["logo", "branding", "identity", "design", "brand"],
+            keywords: ["logo design", "branding", "brand identity", "visual identity", "graphics"],
             answer: "Our branding service covers logo design, brand colors, typography, and a complete visual identity system for your business."
         },
         {
@@ -196,7 +196,21 @@ export const Chatbot = () => {
         }
     ];
 
-    const matchFAQ = (q: string) => FAQ_MAP.find(f => f.keywords.some(k => q.toLowerCase().includes(k))) ?? null;
+    const matchFAQ = (query: string) => {
+        const q = query.toLowerCase().trim();
+        return FAQ_MAP.find(f => f.keywords.some(k => {
+            const keyword = k.toLowerCase();
+            if (q === keyword) return true;
+            
+            const index = q.indexOf(keyword);
+            if (index === -1) return false;
+
+            // Boundary check to prevent partial matches like 'redesign' matching 'design'
+            const before = index === 0 || !/[a-z0-9]/.test(q[index - 1]);
+            const after = index + keyword.length === q.length || !/[a-z0-9]/.test(q[index + keyword.length]);
+            return before && after;
+        })) ?? null;
+    };
 
     const scrollRef = useRef<HTMLDivElement>(null);
 
@@ -320,39 +334,42 @@ export const Chatbot = () => {
     };
 
     const processQuery = (query: string) => {
-        const q = query.toLowerCase();
-        const faq = matchFAQ(q);
+        const q = query.toLowerCase().trim();
         const msgType = classifyMessage(query);
 
-        // ── Step-specific option handling should run before FAQ intercept ─────────
-        if (step === "COLLECTING_PLATFORM") {
-            const platform = PLATFORMS.includes(query) ? query : detectPlatform(query);
-            if (platform) {
-                pendingSelectionsRef.current.platform = platform;
-                setLead(prev => ({ ...prev, platform }));
-                setStep("COLLECTING_WEBSITE_TYPE");
-                botSay(
-                    platform === "WordPress"
-                        ? "Great choice 👍\nWordPress is a flexible platform for many types of websites.\n\nWhat type of website are you planning to build?"
-                        : "Got it.\n\nWhat type of website are you planning to build?",
-                    WEBSITE_TYPES
-                );
-                return;
-            }
+        // ── 1. PRIORITY: Exact Button Matches ─────────────────────────────────────
+        // If the user clicks a button, we process it immediately regardless of FAQ match
+        if (step === "COLLECTING_SERVICE" && SERVICES.some(s => s.toLowerCase() === q)) {
+            handleServiceSelection(query);
+            return;
+        }
+        if (step === "COLLECTING_PLATFORM" && PLATFORMS.some(s => s.toLowerCase() === q)) {
+            pendingSelectionsRef.current.platform = query;
+            setLead(prev => ({ ...prev, platform: query }));
+            setStep("COLLECTING_WEBSITE_TYPE");
+            botSay(
+                query === "WordPress"
+                    ? "Great choice 👍\nWordPress is a flexible platform for many types of websites.\n\nWhat type of website are you planning to build?"
+                    : "Got it.\n\nWhat type of website are you planning to build?",
+                WEBSITE_TYPES
+            );
+            return;
+        }
+        if (step === "COLLECTING_WEBSITE_TYPE" && WEBSITE_TYPES.some(s => s.toLowerCase() === q)) {
+            pendingSelectionsRef.current.websiteType = query;
+            setLead(prev => ({ ...prev, websiteType: query }));
+            setStep("COLLECTING_PROJECT_DETAILS");
+            botSay("Nice!\nCould you briefly describe your business or project?");
+            return;
+        }
+        if (step === "COLLECTING_TIMELINE" && TIMELINES.some(s => s.toLowerCase() === q)) {
+            setLead(prev => ({ ...prev, timeline: query }));
+            setStep("COLLECTING_EMAIL");
+            botSay("Where should we send your project details or quote?\nPlease enter your email address.");
+            return;
         }
 
-        if (step === "COLLECTING_WEBSITE_TYPE") {
-            const websiteType = WEBSITE_TYPES.includes(query) ? query : detectWebsiteType(query);
-            if (websiteType) {
-                pendingSelectionsRef.current.websiteType = websiteType;
-                setLead(prev => ({ ...prev, websiteType }));
-                setStep("COLLECTING_PROJECT_DETAILS");
-                botSay("Nice!\nCould you briefly describe your business or project?");
-                return;
-            }
-        }
-
-        // ── Contact info collection steps (strict) ────────────────────────────────
+        // ── 2. Contact info collection steps (Strict) ─────────────────────────────
         if (step === "COLLECTING_EMAIL") {
             if (!isValidEmail(query)) {
                 botSay("⚠️ That doesn't look like a valid email address.\n\nExample: name@email.com\n\nCould you please enter your email again?");
@@ -363,7 +380,6 @@ export const Chatbot = () => {
             botSay("Would you like to share a phone number so our team can contact you faster?\n(You can skip this if you prefer.)", ["Skip"]);
             return;
         }
-
         if (step === "COLLECTING_PHONE") {
             const phone = q === "skip" ? "" : query;
             setLead(prev => ({ ...prev, phone }));
@@ -371,21 +387,22 @@ export const Chatbot = () => {
             return;
         }
 
-        // ── FAQ intercept (available at any step) ────────────────────────────────
+        // ── 3. FAQ Intercept (Available at any step for questions) ────────────────
+        const faq = matchFAQ(q);
         if (faq) {
             botSay(faq.answer);
             askNextAfterFAQ(900);
             return;
         }
 
-        // ── Complex technical question ────────────────────────────────────────────
+        // ── 4. Complex signals ────────────────────────────────────────────────────
         if (msgType === "complex") {
             botSay("That looks like a more specific requirement.\nOur team would be happy to review it and provide the best solution.\n\nCould you share your email so one of our specialists can contact you?");
             setStep("COLLECTING_EMAIL");
             return;
         }
 
-        // ── INITIAL step — flexible entry ─────────────────────────────────────────
+        // ── 5. INITIAL / Name detection ───────────────────────────────────────────
         if (step === "INITIAL" || step === "COLLECTING_NAME") {
             if (msgType === "greeting") {
                 botSay("Hello! 😊\nI'm Zyra, the digital assistant from Zyra Digitals.\nMay I know your name so I can assist you better?");
@@ -423,8 +440,6 @@ export const Chatbot = () => {
             if (msgType === "name") {
                 const name = query.trim();
                 setLead(prev => ({ ...prev, name }));
-
-                // If service was inferred earlier (user started with "I need a website..."), skip asking again.
                 const knownService = lead.service || pendingSelectionsRef.current.service;
                 const knownPlatform = lead.platform || pendingSelectionsRef.current.platform;
                 const knownWebsiteType = lead.websiteType || pendingSelectionsRef.current.websiteType;
@@ -437,7 +452,6 @@ export const Chatbot = () => {
                                 botSay(`Nice to meet you ${name} 🙂\n\nCould you briefly describe your business or project?`);
                                 return;
                             }
-
                             setStep("COLLECTING_WEBSITE_TYPE");
                             botSay(`Nice to meet you ${name} 🙂\n\nWhat type of website are you planning to build?`, WEBSITE_TYPES);
                             return;
@@ -445,23 +459,16 @@ export const Chatbot = () => {
                         setStep("COLLECTING_PLATFORM");
                         botSay(`Nice to meet you ${name} 🙂\n\nWhat development platform do you prefer?`, PLATFORMS);
                     } else {
-                        if (knownWebsiteType) {
-                            setStep("COLLECTING_PROJECT_DETAILS");
-                            botSay(`Nice to meet you ${name} 🙂\n\nCould you briefly describe your business or project?`);
-                            return;
-                        }
                         setStep("COLLECTING_PROJECT_DETAILS");
                         botSay(`Nice to meet you ${name} 🙂\n\nCould you briefly describe your project or business?`);
                     }
                     return;
                 }
-
                 setStep("COLLECTING_SERVICE");
                 botSay(`Nice to meet you ${name} 🙂\n\nWhat would you like help with today?`, SERVICES);
                 return;
             }
 
-            // Fallback for unclear initial input
             if (step === "COLLECTING_NAME") {
                 botSay("I don't think you've shared your name yet.\nWhat should I call you?");
             } else {
@@ -471,19 +478,46 @@ export const Chatbot = () => {
             return;
         }
 
-        // ── Mid-flow steps ────────────────────────────────────────────────────────
+        // ── 6. Fallback soft-matching ─────────────────────────────────────────────
         switch (step) {
             case "COLLECTING_SERVICE":
-                handleServiceSelection(query);
+                if (!handleServiceSelection(query)) {
+                    botSay("I'm not sure which service that refers to. Could you pick one from the options?", SERVICES);
+                }
+                break;
+
+            case "COLLECTING_PLATFORM":
+                const platform = detectPlatform(query);
+                if (platform) {
+                    pendingSelectionsRef.current.platform = platform;
+                    setLead(prev => ({ ...prev, platform }));
+                    setStep("COLLECTING_WEBSITE_TYPE");
+                    botSay("Got it. What type of website are you planning to build?", WEBSITE_TYPES);
+                } else {
+                    botSay("What development platform do you prefer?", PLATFORMS);
+                }
+                break;
+
+            case "COLLECTING_WEBSITE_TYPE":
+                const websiteType = detectWebsiteType(query);
+                if (websiteType) {
+                    pendingSelectionsRef.current.websiteType = websiteType;
+                    setLead(prev => ({ ...prev, websiteType }));
+                    setStep("COLLECTING_PROJECT_DETAILS");
+                    botSay("Nice! Could you briefly describe your project?");
+                } else {
+                    botSay("What type of website are you planning to build?", WEBSITE_TYPES);
+                }
                 break;
 
             case "COLLECTING_PROJECT_DETAILS":
                 setLead(prev => ({ ...prev, projectDetails: query }));
                 setStep("COLLECTING_TIMELINE");
-                botSay("Thanks for sharing that.\n\nOur team can definitely help with that. What timeline are you planning for this project?", TIMELINES);
+                botSay("Thanks for sharing that.\n\nOur team can definitely help. What timeline are you planning for this project?", TIMELINES);
                 break;
 
             case "COLLECTING_TIMELINE":
+                // If not exact match handled above, we just take it as free text
                 setLead(prev => ({ ...prev, timeline: query }));
                 setStep("COLLECTING_EMAIL");
                 botSay("Where should we send your project details or quote?\nPlease enter your email address.");
@@ -494,17 +528,29 @@ export const Chatbot = () => {
         }
     };
 
-    const handleServiceSelection = (query: string) => {
-        const q = query.toLowerCase();
+    const handleServiceSelection = (query: string): boolean => {
+        const q = query.toLowerCase().trim();
         let service = "";
 
-        if (q.includes("build") || q.includes("new website")) service = "Build a new website";
-        else if (q.includes("redesign") || q.includes("existing")) service = "Redesign an existing website";
-        else if (q.includes("branding") || q.includes("logo")) service = "Branding / Logo design";
-        else if (q.includes("seo")) service = "Improve SEO";
-        else if (q.includes("hosting") || q.includes("maintenance")) service = "Hosting or maintenance";
-        else if (q.includes("something") || q.includes("else") || q.includes("other")) service = "Something else";
-        else service = query;
+        // Exact match first
+        const exact = SERVICES.find(s => s.toLowerCase() === q);
+        if (exact) {
+            service = exact;
+        } else if (q.includes("build") || q.includes("new website")) {
+            service = "Build a new website";
+        } else if (q.includes("redesign") || q.includes("existing")) {
+            service = "Redesign an existing website";
+        } else if (q.includes("branding") || q.includes("logo")) {
+            service = "Branding / Logo design";
+        } else if (q.includes("seo")) {
+            service = "Improve SEO";
+        } else if (q.includes("hosting") || q.includes("maintenance")) {
+            service = "Hosting or maintenance";
+        } else if (q.includes("something") || q.includes("else")) {
+            service = "Something else";
+        }
+
+        if (!service) return false;
 
         pendingSelectionsRef.current.service = service;
         setLead(prev => ({ ...prev, service }));
@@ -521,18 +567,21 @@ export const Chatbot = () => {
                         : "Got it.\n\nWhat type of website are you planning to build?",
                     WEBSITE_TYPES
                 );
-                return;
+            } else {
+                setStep("COLLECTING_PLATFORM");
+                botSay(`Great! We specialize in high-performance websites that convert visitors into clients.\n\nWhat development platform do you prefer?`, PLATFORMS);
             }
-
-            setStep("COLLECTING_PLATFORM");
-            botSay(`Great! We specialize in high-performance websites that convert visitors into clients.\n\nWhat development platform do you prefer?`, PLATFORMS);
         } else {
             setStep("COLLECTING_PROJECT_DETAILS");
             botSay("Great choice!\n\nCould you briefly describe your project or business?");
         }
+        return true;
     };
 
     const finishLead = async (phone: string) => {
+        setStep("THANK_YOU");
+        botSay("Perfect 👍\n\nThank you for sharing your details.\nOur team will review your request and contact you shortly.\n\nThank you for reaching out to Zyra Digitals.\nWe're excited to help with your project! 🚀");
+
         const finalLead = { ...lead, phone };
         try {
             const messageContent = [
@@ -558,9 +607,6 @@ export const Chatbot = () => {
         } catch (err) {
             console.error("Lead submission error:", err);
         }
-
-        setStep("THANK_YOU");
-        botSay("Perfect 👍\n\nThank you for sharing your details.\nOur team will review your request and contact you shortly.\n\nThank you for reaching out to Zyra Digitals.\nWe're excited to help with your project! 🚀");
 
         setTimeout(() => startSession(), 7000);
     };
