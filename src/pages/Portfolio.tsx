@@ -125,21 +125,20 @@ const Portfolio = (): JSX.Element => {
       color: "#f8f9fa"
     },
     {
-      title: "Lumi & Co.",
+      title: "XIVI",
       category: "Luxury Jewelry",
-      image: "/images/Portfolio_projects/lumi/lumi.png",
+      image: "/images/Portfolio_projects/xivi/image.png",
       images: [
-        "/images/Portfolio_projects/lumi/lumi.png",
-        "/images/Portfolio_projects/lumi/image.png",
-        "/images/Portfolio_projects/lumi/image copy.png",
-        "/images/Portfolio_projects/lumi/image copy 2.png",
-        "/images/Portfolio_projects/lumi/image copy 3.png"
+        "/images/Portfolio_projects/xivi/image.png",
+        "/images/Portfolio_projects/xivi/Screenshot 2026-05-29 100215 copy.png",
+        "/images/Portfolio_projects/xivi/Screenshot 2026-05-29 100230 copy.png",
+        "/images/Portfolio_projects/xivi/Screenshot 2026-05-29 100309 copy.png"
       ],
       description:
-        "A handcrafted jewelry brand from Pune showcasing timeless elegance through ethically-sourced materials, rose gold designs, and sustainable practices that celebrate individuality.",
-      technologies: ["React", "TypeScript", "Tailwind CSS"],
-      link: "https://lumi-co.vercel.app/",
-      color: "#fffafa"
+        "An exquisite e-commerce platform for XIVI, specializing in pure 925 sterling silver jewelry. Designed to blend modern minimal aesthetics with traditional artisan craftsmanship, delivering a premium shopping experience for curated silver collections.",
+      technologies: ["React", "TypeScript", "Tailwind CSS", "Framer Motion"],
+      link: "https://www.xivi.in/",
+      color: "#f5f6f8"
     },
     {
       title: "AmzCoz",
@@ -160,22 +159,23 @@ const Portfolio = (): JSX.Element => {
       color: "#f5f5f5"
     },
     {
-      title: "CrowdVerse",
-      category: "FinTech & Analytics",
-      image: "/images/Portfolio_projects/crowdverse/image.png",
+      title: "Achyutam Organics",
+      category: "Organic E-Commerce",
+      image: "/images/Portfolio_projects/achyutam/Screenshot 2026-05-29 095242.png",
       images: [
-        "/images/Portfolio_projects/crowdverse/image.png",
-        "/images/Portfolio_projects/crowdverse/image copy.png",
-        "/images/Portfolio_projects/crowdverse/image copy 2.png",
-        "/images/Portfolio_projects/crowdverse/image copy 3.png",
-        "/images/Portfolio_projects/crowdverse/image copy 4.png",
-        "/images/Portfolio_projects/crowdverse/image copy 5.png"
+        "/images/Portfolio_projects/achyutam/Screenshot 2026-05-29 095242.png",
+        "/images/Portfolio_projects/achyutam/Screenshot 2026-05-29 095248.png",
+        "/images/Portfolio_projects/achyutam/Screenshot 2026-05-29 095258.png",
+        "/images/Portfolio_projects/achyutam/Screenshot 2026-05-29 095328.png",
+        "/images/Portfolio_projects/achyutam/Screenshot 2026-05-29 095417.png",
+        "/images/Portfolio_projects/achyutam/Screenshot 2026-05-29 095435.png",
+        "/images/Portfolio_projects/achyutam/Screenshot 2026-05-29 095505.png"
       ],
       description:
-        "A real-time market analytics platform delivering crowd sentiment on stocks and cryptocurrencies, combining trader votes with AI-powered insights for smarter investment decisions.",
-      technologies: ["React", "TypeScript", "Tailwind CSS", "AI Integration"],
-      link: "https://crowdverse.in/",
-      color: "#f0f4ff"
+        "A premium farm-to-home e-commerce platform for Achyutam Organics, specializing in A2 Gir Cow Bilona Ghee and fresh milk delivery. Built to bring traditional Vedic purity and organic dairy products directly to consumers nationwide.",
+      technologies: ["ReactJS", "Tailwind CSS", "Framer Motion"],
+      link: "https://achyutamorganic.com",
+      color: "#fdfbf7"
     },
     {
       title: "SeekBuyLove",
@@ -292,7 +292,7 @@ const Portfolio = (): JSX.Element => {
     <div className="pt-20">
       <SEO
         title="Portfolio | Premium Website Design & Development Showcase"
-        description="Explore the award-winning portfolio of Zyra Digitals. See how we've helped businesses like Precision Root Canal, Lumi & Co, and AmzCoz achieve digital excellence through custom web development and premium design."
+        description="Explore the award-winning portfolio of Zyra Digitals. See how we've helped businesses like Precision Root Canal, XIVI, and Achyutam Organics achieve digital excellence through custom web development and premium design."
         canonical="/portfolio"
         keywords="website design portfolio, web development projects, UI/UX design showcase, professional website examples, best website designs, creative web development, portfolio website, Zyra Digitals work, premium web design projects, Coimbatore web designer portfolio, healthcare web design, luxury jewelry website, e-commerce success stories"
         schema={portfolioSchema}

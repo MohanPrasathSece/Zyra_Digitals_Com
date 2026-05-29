@@ -9,7 +9,7 @@ export const LogoCarousel = ({ title = "Brands We've Empowered" }: LogoCarouselP
         { name: "404", src: "/images/brands/404-logo-removebg-preview.png" },
         { name: "Blue & Black Logo", src: "/images/brands/Blue_and_Black_Minimalist_Brand_Logo-removebg-preview.png" },
         { name: "Ajanta", src: "/images/brands/ajanta.png" },
-        { name: "Crowdverse", src: "/images/brands/crowdverse.png" },
+
         { name: "Ecom", src: "/images/brands/ecom.png" },
         { name: "Elevate", src: "/images/brands/elevate.png" },
         { name: "Femtricks", src: "/images/brands/femtricks.png" },
