@@ -19,34 +19,34 @@ interface FAQProps {
 const defaultFAQs: FAQItem[] = [
   {
     id: "faq-1",
-    question: "What services do you offer?",
-    answer: "We specialize in high-performance website development, brand identity design, SEO optimization, and premium hosting solutions. Whether you need a personal portfolio, a corporate site, or a complex e-commerce platform, we deliver clean code and exceptional design."
+    question: "What do you actually do?",
+    answer: "We code custom websites, design clean brands, optimize SEO, and handle hosting. Simple as that. We make you look legendary online and bring in actual clients. No useless fluff."
   },
   {
     id: "faq-2",
-    question: "How long does a typical project take?",
-    answer: "Timelines vary by scope: websites generally take 2-4 weeks, brand identity 1-2 weeks, and full digital ecosystems 4-6 weeks. We prioritize quality while maintaining lean timelines to get your project live efficiently."
+    question: "How fast is the turnaround?",
+    answer: "Usually 2 to 4 weeks. Branding takes 1 to 2 weeks. We move fast, but we don't cut corners."
   },
   {
     id: "faq-3",
-    question: "Do you provide ongoing support after launch?",
-    answer: "Absolutely. We offer comprehensive post-launch support including performance monitoring, security updates, and feature additions. We don't just launch and leave—we partner with you for long-term growth."
+    question: "Will you disappear after launch?",
+    answer: "Hell no. We host your site, keep it secure, run updates, and make sure it never goes down. We're in this for the long haul."
   },
   {
     id: "faq-4",
-    question: "What technologies do you use?",
-    answer: "We use a modern tech stack focused on performance and scalability, primarily React, TypeScript, Tailwind CSS, and Framer Motion for animations. For e-commerce, we specialize in high-converting Shopify and WooCommerce implementations."
+    question: "What is your tech stack?",
+    answer: "We use React, TypeScript, Tailwind, and custom code. No slow page builders or heavy WordPress themes that take a year to load."
   },
   {
     id: "faq-5",
-    question: "What is your pricing structure?",
-    answer: "Our pricing is project-based and reflects the custom nature of our work. We provide transparent, detailed quotes based on your specific requirements and value-delivered. Contact us for a bespoke estimate."
+    question: "How much is this gonna cost me?",
+    answer: "We offer custom quotes based on what you actually need. No hidden fees, no billing surprises, just honest pricing."
   }
 ];
 
 export const FAQ = ({
-  title = "Got Questions?",
-  subtitle = "Everything you need to know about working with Zyra Digitals.",
+  title = "Still Got Questions?",
+  subtitle = "We've got straight answers. No corporate jargon allowed.",
   faqs = defaultFAQs,
   className = ""
 }: FAQProps) => {
@@ -174,7 +174,7 @@ export const FAQ = ({
             transition={{ ...animationVariants.container.transition, delay: isMobile ? 0.2 : 0.4 }}
           >
             <p className="font-secondary text-muted-foreground mb-6">
-              Couldn't find what you're looking for?
+              Still got something else on your mind?
             </p>
             <Button 
               variant="gold" 
@@ -182,7 +182,7 @@ export const FAQ = ({
               onClick={() => window.location.href = '/contact'}
               className="h-14 px-10 rounded-md font-bold shadow-lg hover:shadow-gold/20"
             >
-              Get in Touch with Us
+              Let's Make It Happen
             </Button>
           </motion.div>
         </div>

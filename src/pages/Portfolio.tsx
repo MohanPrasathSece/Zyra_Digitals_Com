@@ -330,28 +330,28 @@ const Portfolio = (): JSX.Element => {
               <div className="text-center">
                 <div className="inline-flex items-center gap-2 bg-secondary/50 rounded-full px-4 py-2 mb-6">
                   <ExternalLink className="text-foreground" size={16} />
-                  <span className="font-secondary text-sm text-foreground/80 font-medium">Our Portfolio</span>
+                  <span className="font-secondary text-sm text-foreground/80 font-medium">Our Flex</span>
                 </div>
 
                 <h1 className="font-heading text-4xl sm:text-6xl lg:text-7xl font-bold text-foreground mb-6 leading-tight">
-                  Our Work
-                  <span className="block mt-2"><span className="text-gold">Speaks</span> For Itself</span>
+                  Our Work Speaks
+                  <span className="block mt-2"><span className="text-gold">For Itself.</span> No Hype Needed.</span>
                   <span className="sr-only"> - Premium UI/UX Design & Website Development Projects</span>
                 </h1>
 
                 <p className="font-secondary text-lg sm:text-xl text-muted-foreground leading-relaxed mb-8 max-w-3xl mx-auto">
-                  Explore our latest projects and see how we've helped businesses transform their digital presence with exceptional design and development.
+                  Look at what we've built. No clunky templates, no bugs, just sleek, premium web engineering that loads in milliseconds.
                 </p>
 
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
                   <Button variant="gold" size="lg" asChild className="h-16 px-8 text-base">
                     <Link to="/contact" className="flex items-center gap-2">
-                      Start Your Project
+                      Let's Talk Business
                       <ArrowRight size={16} />
                     </Link>
                   </Button>
                   <Button variant="ghost" size="lg" asChild className="h-16 px-8 text-base border border-border">
-                    <a href="#projects">View Projects</a>
+                    <a href="#projects">See Projects</a>
                   </Button>
                 </div>
               </div>
@@ -499,13 +499,13 @@ const Portfolio = (): JSX.Element => {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 pt-24 shrink-0">
           <div className="max-w-4xl mx-auto text-center">
             <div className="inline-flex items-center gap-2 bg-gold/10 rounded-full px-4 py-2 mb-6">
-              <span className="font-secondary text-sm text-gold font-bold">Visual Artistry</span>
+              <span className="font-secondary text-sm text-gold font-bold">Visual Flex</span>
             </div>
             <h2 className="font-heading text-3xl sm:text-5xl font-bold text-black mb-6">
               Banners & <span className="text-gold">Poster</span> Designs
             </h2>
             <p className="font-secondary text-lg text-gray-600 max-w-2xl mx-auto mb-12">
-              A curated collection of visually striking branding materials, banners, and poster designs crafted with precision.
+              Sleek branding assets, menus, and posters designed to grab eyes and make a statement.
             </p>
           </div>
         </div>
@@ -532,14 +532,14 @@ const Portfolio = (): JSX.Element => {
       <AnimatedSection animation="slide-up" className="py-20 bg-background">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="font-heading text-4xl sm:text-5xl font-bold text-foreground mb-6">
-            Want to See Your Project Here?
+            Want to See Your Brand Here?
           </h2>
           <p className="font-secondary text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
-            Let's collaborate to create something exceptional that showcases your brand.
+            Stop settling for a slow, boring site. Let's build something you're actually proud to show off.
           </p>
           <Button variant="gold" size="lg" asChild className="h-16 px-8">
             <Link to="/contact" className="flex items-center gap-2">
-              Start Your Project
+              Let's Talk Business
               <ArrowRight size={16} />
             </Link>
           </Button>

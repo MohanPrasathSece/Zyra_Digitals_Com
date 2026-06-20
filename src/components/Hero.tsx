@@ -65,26 +65,26 @@ export const Hero = () => {
           }`}
         >
           <h1 className="font-heading text-5xl sm:text-7xl lg:text-8xl font-bold text-foreground mb-6 leading-tight">
-            We Build <span className="text-metallic-gold">Brands</span>
+            We Build <span className="text-metallic-gold">Websites</span>
             <span className="sr-only"> - Best Website Design & Web Development Agency</span>
           </h1>
           <p className="font-heading text-2xl sm:text-4xl lg:text-5xl text-foreground/80 mb-8 italic">
-            That People Remember
+            That Crush Your Competition
           </p>
           <p className="font-secondary text-sm sm:text-base text-muted-foreground mb-8 max-w-2xl mx-auto">
-            We build high-performance websites, powerful brands, and growth systems. Website design, SEO, hosting, and strategic brand creation that works together.
+            We design custom websites that load instantly, premium brands that look legendary, and SEO that gets you leads on autopilot. No lazy templates, no corporate BS.
           </p>
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Button variant="gold" size="lg" asChild className="h-16 px-10 text-sm sm:text-base [&_svg]:size-5">
               <Link to="/contact" className="flex items-center gap-2">
-                Build Your Brand
+                Let's Build It
                 <ArrowRight size={16} />
               </Link>
             </Button>
             <Button variant="ghost-gold" size="lg" asChild className="h-16 px-10 text-sm sm:text-base">
-              <Link to="/portfolio">Explore Our Work</Link>
+              <Link to="/portfolio">See The Proof</Link>
             </Button>
           </div>
         </div>

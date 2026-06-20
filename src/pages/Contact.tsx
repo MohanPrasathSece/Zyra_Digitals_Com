@@ -62,17 +62,17 @@ const Contact = () => {
           <div className="max-w-4xl mx-auto text-center">
             <div className="inline-flex items-center gap-2 bg-secondary/50 rounded-full px-4 py-2 mb-6">
               <ExternalLink className="text-foreground" size={16} />
-              <span className="font-secondary text-sm text-foreground/80 font-medium">Contact Zyra</span>
+              <span className="font-secondary text-sm text-foreground/80 font-medium">Let's Talk</span>
             </div>
 
             <h1 className="font-heading text-5xl sm:text-6xl lg:text-7xl font-bold text-foreground mb-6 leading-tight">
-              Let's Create <br />
-              <span className="text-gold">Together</span>
+              Let's Build Something <br />
+              <span className="text-gold">Legendary</span>
               <span className="sr-only"> - Get a Quote for Website Design & Branding Services</span>
             </h1>
 
             <p className="font-secondary text-lg sm:text-xl text-muted-foreground leading-relaxed mb-8 max-w-2xl mx-auto">
-              Have a project in mind? Reach out and let's create something exceptional with premium design and performance.
+              Got a project or a startup idea that needs a major digital upgrade? Fill out the form or reach out directly.
             </p>
           </div>
         </div>
@@ -86,7 +86,7 @@ const Contact = () => {
             <AnimatedSection animation="fade-up" delay={0}>
               <div className="bg-card p-8 sm:p-10 rounded-2xl border border-border shadow-xl h-full">
                 <h2 className="font-heading text-3xl font-bold text-foreground mb-8">
-                  Send a Message
+                  Pitch Your Project
                 </h2>
                 <ContactForm />
               </div>
@@ -97,11 +97,10 @@ const Contact = () => {
               <div className="space-y-12">
                 <div>
                   <h2 className="font-heading text-3xl font-bold text-foreground mb-6">
-                    Get in Touch
+                    No Boring Meetings
                   </h2>
                   <p className="font-secondary text-lg text-muted-foreground leading-relaxed">
-                    Whether you have a detailed project brief or just an idea you'd like to explore,
-                    we're here to help. Contact us through the form or reach out directly.
+                    Skip the corporate red tape. If you want a fast, high-converting custom website and brand design, shoot us a message. We'll get back to you within 24 hours.
                   </p>
                 </div>
 

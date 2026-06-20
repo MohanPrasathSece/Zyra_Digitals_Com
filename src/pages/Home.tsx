@@ -21,23 +21,23 @@ const Home = () => {
   const services = [
     {
       icon: User,
-      title: "Brand Identity & Design",
-      description: "Strategic brand creation with visual identity, messaging, and design that connects emotionally.",
+      title: "Branding That Doesn't Suck",
+      description: "Visual identity, logos, and style guides that make your competitors extremely jealous.",
     },
     {
       icon: Code,
-      title: "Website Development",
-      description: "High-performance, conversion-focused websites built with clean code and modern technologies.",
+      title: "Websites That Sell",
+      description: "Custom, ultra-fast sites engineered to turn casual visitors into paying customers. No lag allowed.",
     },
     {
       icon: Briefcase,
-      title: "SEO & Hosting",
-      description: "SEO optimization and reliable hosting solutions that ensure your brand performs and scales online.",
+      title: "SEO & Fast Hosting",
+      description: "Rank #1 on Google and keep your site online 24/7. Speed is money, and we deliver both.",
     },
     {
       icon: ShoppingCart,
-      title: "Digital Growth",
-      description: "Comprehensive digital strategies that drive traffic, conversions, and long-term brand growth.",
+      title: "No-BS Digital Growth",
+      description: "Real traffic, high conversions, and growth campaigns built to print money. No fake metric fluff.",
     },
   ];
 
@@ -45,23 +45,23 @@ const Home = () => {
   const homeFAQs = [
     {
       id: "faq-home-1",
-      question: "What services do you offer?",
-      answer: "We offer comprehensive digital solutions: website development (our core), brand identity & design, SEO optimization, hosting solutions, and digital growth strategies. We create websites that perform and brands that connect."
+      question: "What do you actually do?",
+      answer: "We code custom websites, design clean brands, optimize SEO, and handle hosting. Simple as that. We make you look legendary online and bring in actual clients. No useless fluff."
     },
     {
       id: "faq-home-2",
-      question: "How long does a typical project take?",
-      answer: "Project timelines vary: websites typically take 2-4 weeks, brand identity 1-2 weeks, and full digital ecosystems 4-6 weeks. We provide detailed timelines during consultation based on your specific needs."
+      question: "How fast is the turnaround?",
+      answer: "Usually 2 to 4 weeks. Branding takes 1 to 2 weeks. We move fast, but we don't cut corners."
     },
     {
       id: "faq-home-3",
-      question: "Do you provide ongoing support and hosting?",
-      answer: "Yes, we offer comprehensive ongoing support including website maintenance, SEO optimization, reliable hosting, performance monitoring, and feature updates to ensure your digital presence continues to grow."
+      question: "Will you disappear after launch?",
+      answer: "Hell no. We host your site, keep it secure, run updates, and make sure it never goes down. We're in this for the long haul."
     },
     {
       id: "faq-home-4",
-      question: "What makes your approach different?",
-      answer: "We combine technical excellence with strategic thinking. We build high-performance websites and powerful brands that work together seamlessly, ensuring your digital presence is both technically sound and emotionally resonant."
+      question: "Why should I choose you over cheap agencies?",
+      answer: "Because most agencies build slow sites using templates and charge you for 'meetings'. We write clean code, design from scratch, and build stuff that actually prints cash."
     }
   ];
 
@@ -174,12 +174,12 @@ const Home = () => {
               viewport={{ once: true }}
             >
               <h2 className="section-title mb-6 leading-tight">
-                Everything Your <br />
-                <span className="text-gold">Digital Presence</span> Needs
+                Everything You Need <br />
+                <span className="text-gold">To Dominate The Internet</span>
               </h2>
               <p className="section-description max-w-2xl mx-auto">
-                We build exceptional websites, powerful brands, and high-performance growth systems.
-                As the leading <Link to="/services" className="text-gold hover:underline">web development company in Coimbatore</Link>, we ensure your brand stands out.
+                We build fast websites, clean designs, and growth systems that actually make you money.
+                As the leading <Link to="/services" className="text-gold hover:underline">web development company in Coimbatore</Link>, we ensure you stand out.
               </p>
             </motion.div>
           </div>
@@ -198,7 +198,7 @@ const Home = () => {
 
           <div className="text-center mt-12">
             <Button variant="ghost-gold" size="lg" asChild>
-              <Link to="/services">Explore Our Work</Link>
+              <Link to="/services">See The Proof</Link>
             </Button>
           </div>
         </div>
@@ -209,8 +209,8 @@ const Home = () => {
 
       <AnimatedSection animation="fade-up">
         <FAQ
-          title="Common Questions"
-          subtitle="Quick answers to help you get started with your project"
+          title="Still Got Questions?"
+          subtitle="We've got straight answers. No corporate jargon allowed."
           faqs={homeFAQs}
           className="bg-gradient-to-br from-background via-primary/5 to-gold/5"
         />
@@ -220,18 +220,18 @@ const Home = () => {
       <AnimatedSection animation="slide-up" className="py-20 bg-white text-black">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="font-heading text-3xl sm:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-            Ready to Build a Brand
-            <span className="block">That Stands Out?</span>
+            Ready to Leave Your Competitors
+            <span className="block">In The Dust?</span>
           </h2>
           <p className="font-secondary text-lg sm:text-xl text-gray-600 mb-12 max-w-3xl mx-auto leading-relaxed">
-            Let's turn your vision into a brand that performs, scales, and lasts.
+            Stop settling for average. Let's build a website and brand that prints money.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <Button variant="gold" size="lg" asChild>
-              <Link to="/contact">Start Your Brand Journey</Link>
+              <Link to="/contact">Let's Talk Business</Link>
             </Button>
             <Button variant="outline" size="lg" asChild className="border-black text-black hover:bg-black hover:text-white px-8 py-3 rounded-lg transition-colors duration-200">
-              <Link to="/portfolio">Explore Our Work</Link>
+              <Link to="/portfolio">Show Me Proof</Link>
             </Button>
           </div>
         </div>

@@ -144,13 +144,13 @@ export const Testimonials = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="section-wrapper text-center mb-24 md:mb-32">
           <div className="flex justify-center">
-            <div className="tag border-gold/30 text-gold bg-gold/5 mb-6 text-sm font-bold uppercase tracking-widest">Our Track Record</div>
+            <div className="tag border-gold/30 text-gold bg-gold/5 mb-6 text-sm font-bold uppercase tracking-widest">The Proof</div>
           </div>
           <h2 className="section-title mt-8 leading-tight">
-            Stories of Success And <br /> <span className="text-gold">Digital Growth</span>
+            What Clients Say <br /> <span className="text-gold">(After We Blew Their Minds)</span>
           </h2>
           <p className="section-description mt-8 mx-auto max-w-4xl text-[17px]">
-            We build exceptional websites, powerful brands, and high-performance growth systems. As the leading web development company in Coimbatore, we ensure your brand stands out.
+            Don't just take our word for it. Here is the feedback from real founders who left their slow websites and boring brands behind.
           </p>
         </div>
         <div className="flex justify-center gap-6 [mask-image:linear-gradient(to_bottom,transparent,black_15%,black_85%,transparent)] max-h-[738px] overflow-hidden mt-10">

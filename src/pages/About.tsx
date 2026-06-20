@@ -20,33 +20,33 @@ const About = () => {
   const expertise = [
     {
       icon: Target,
-      title: "Strategic Branding",
-      description: "We craft brand strategies that resonate with your target audience and drive business growth."
+      title: "No-BS Branding",
+      description: "We define your look, voice, and vibe so you actually stand out instead of blending in."
     },
     {
       icon: Zap,
-      title: "Web Development",
-      description: "High-performance websites that serve as the foundation of your digital presence."
+      title: "Flawless Development",
+      description: "Butter-smooth, fast websites built with clean code. No laggy plugins, no slow loaders."
     },
     {
       icon: User,
-      title: "User Experience",
-      description: "Intuitive designs that create meaningful connections between your brand and customers."
+      title: "Zero-Frustration UX",
+      description: "Websites so easy to use that checking out is a breeze. Zero friction, pure conversions."
     },
     {
       icon: Award,
-      title: "Digital Growth",
-      description: "SEO and marketing strategies that ensure your brand gets discovered and remembered."
+      title: "Real SEO & Traffic",
+      description: "Rank high on Google so you stop wasting money chasing leads. They will find you."
     },
   ];
 
   const achievements = [
-    "Built 50+ high-performance websites",
-    "Helped 30+ brands establish their digital presence",
-    "Achieved 100% client satisfaction rate",
-    "Specialized in brand-first development approach",
-    "Expert in SEO and performance optimization",
-    "Committed to ongoing support and growth",
+    "Shipped 50+ lightning-fast websites",
+    "Built custom brands that print money",
+    "100% happy clients (zero ghosting)",
+    "Completely custom code—no copy-paste templates",
+    "Obsessed with Google page speeds and SEO",
+    "We scale with you, we don't disappear",
   ];
 
   const aboutSchema = {
@@ -114,7 +114,7 @@ const About = () => {
                   transition={{ duration: 0.6, delay: 0.2 }}
                 >
                   <Star className="text-foreground" size={16} />
-                  <span className="font-secondary text-sm text-foreground/80 font-medium">Brand Architects</span>
+                  <span className="font-secondary text-sm text-foreground/80 font-medium">Digital Empires</span>
                 </motion.div>
 
                 <motion.h1
@@ -123,8 +123,8 @@ const About = () => {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.7, delay: 0.3 }}
                 >
-                  More Than an Agency.
-                  <span className="block text-gold mt-2">We're</span> Brand Architects.
+                  Not Another Generic Agency.
+                  <span className="block text-gold mt-2">We Build</span> Digital Empires.
                   <span className="sr-only"> - Best Web Design Company & Branding Agency in India</span>
                 </motion.h1>
 
@@ -134,7 +134,7 @@ const About = () => {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.7, delay: 0.5 }}
                 >
-                  At Zyra Digitals, we believe a strong brand is not just how it looks — it's how it feels, functions, and performs across every digital touchpoint.
+                  We don't do slow templates, boring corporate jargon, or average designs. We build lightning-fast custom websites and sleek brands that command attention and make you money.
                 </motion.p>
 
                 <motion.div
@@ -145,12 +145,12 @@ const About = () => {
                 >
                   <Button variant="gold" size="lg" asChild className="h-16 px-8 text-base">
                     <Link to="/contact" className="flex items-center gap-2">
-                      Start Your Brand Journey
+                      Let's Build It
                       <ArrowRight size={16} />
                     </Link>
                   </Button>
                   <Button variant="ghost" size="lg" asChild className="h-16 px-8 text-base border border-border">
-                    <Link to="/portfolio">View Our Work</Link>
+                    <Link to="/portfolio">See The Proof</Link>
                   </Button>
                 </motion.div>
               </motion.div>
@@ -164,17 +164,17 @@ const About = () => {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-12">
-              <h2 className="font-heading text-3xl sm:text-5xl font-bold text-foreground mb-4">Our Achievements</h2>
+              <h2 className="font-heading text-3xl sm:text-5xl font-bold text-foreground mb-4">Our Flex (By the Numbers)</h2>
               <p className="font-secondary text-lg text-muted-foreground">
-                Building success stories one brand at a time.
+                We don't just talk. We deliver.
               </p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {achievements.map((achievement, index) => (
-                <AnimatedSection key={index} animation="slide-up" delay={index * 50}>
-                  <div className="flex items-start gap-3 p-4 bg-background/50 backdrop-blur border border-border rounded-lg">
-                    <CheckCircle className="text-gold flex-shrink-0 mt-1" size={20} />
+                <AnimatedSection key={index} animation="slide-up" delay={index * 50} className="h-full">
+                  <div className="flex items-center gap-3 p-4 bg-background/50 backdrop-blur border border-border rounded-lg h-full">
+                    <CheckCircle className="text-gold flex-shrink-0" size={20} />
                     <span className="font-secondary text-foreground">{achievement}</span>
                   </div>
                 </AnimatedSection>
@@ -189,9 +189,9 @@ const About = () => {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-16">
-              <h2 className="font-heading text-3xl sm:text-5xl font-bold text-foreground mb-4">Our Expertise</h2>
+              <h2 className="font-heading text-3xl sm:text-5xl font-bold text-foreground mb-4">What We're Actually Good At</h2>
               <p className="font-secondary text-lg text-muted-foreground max-w-2xl mx-auto">
-                We combine strategic thinking with technical excellence to build brands that scale.
+                We design, code, and optimize. No corporate fluff, just pure skill.
               </p>
             </div>
 
@@ -219,8 +219,8 @@ const About = () => {
       <AnimatedSection animation="slide-up" className="py-24 bg-white overflow-hidden">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto text-center mb-20">
-            <h2 className="font-heading text-3xl sm:text-5xl font-bold text-foreground mb-6">Our Process</h2>
-            <p className="font-secondary text-lg text-muted-foreground">How we transform your vision into reality</p>
+            <h2 className="font-heading text-3xl sm:text-5xl font-bold text-foreground mb-6">How We Make It Happen</h2>
+            <p className="font-secondary text-lg text-muted-foreground">A simple, straight-to-the-point workflow. No endless meetings.</p>
           </div>
 
           <div className="relative max-w-7xl mx-auto px-4">
@@ -272,29 +272,29 @@ const About = () => {
               {[
                 {
                   id: 1,
-                  title: "Design Idea",
-                  desc: "We craft brand strategies that resonate with your target audience and drive business growth through comprehensive brand identity analysis, audience research, competitor insights, strategic positioning, and visual development.",
+                  title: "1. The Vibe (Design)",
+                  desc: "We sketch, design, and plan a custom visual identity and website layout that perfectly fits your brand. You look at it, fall in love with it, and we proceed. No guess work.",
                   rotation: "-rotate-2",
                   desktopOffset: 120
                 },
                 {
                   id: 2,
-                  title: "Development",
-                  desc: "High-performance websites that serve as the foundation of your digital presence with custom designs, responsive layouts, e-commerce solutions, CMS integration, and SEO optimization for maximum impact.",
+                  title: "2. The Build (Code)",
+                  desc: "We transform the design into clean, ultra-fast custom code. No bloated WordPress themes or slow page-builder systems—just high-performance engineering that runs at warp speed.",
                   rotation: "rotate-2",
                   desktopOffset: 240
                 },
                 {
                   id: 3,
-                  title: "Testing",
-                  desc: "Intuitive designs that create meaningful connections between your brand and customers through strategic social media presence, compelling content marketing, targeted email campaigns, and analytics tracking.",
+                  title: "3. The Polish (QA)",
+                  desc: "We double-check every single button, page speed score, mobile responsiveness link, and animation. We break things on purpose to ensure your site is completely bulletproof.",
                   rotation: "-rotate-1",
                   desktopOffset: 245
                 },
                 {
                   id: 4,
-                  title: "Launch",
-                  desc: "SEO and marketing strategies that ensure your brand gets discovered and remembered through continuous performance monitoring, conversion optimization, and strategic refinement for sustained growth.",
+                  title: "4. The Launch",
+                  desc: "We hit the live switch, index your site on Google Search, and hand you the keys. Then we sit back and watch your conversions and traffic skyrocket.",
                   rotation: "rotate-3",
                   desktopOffset: 135
                 }
@@ -357,14 +357,14 @@ const About = () => {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="font-heading text-3xl sm:text-5xl font-bold text-foreground mb-6">
-              Ready to Build Your Brand?
+              Stop Settling for Average.
             </h2>
             <p className="font-secondary text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
-              Let's create a brand that people remember. Your journey starts here.
+              Let's build a website and brand that puts your competitors to sleep. Let's talk.
             </p>
             <Button variant="gold" size="lg" asChild className="h-16 px-8">
               <Link to="/contact" className="flex items-center gap-2">
-                Start Your Brand Journey
+                Let's Talk Business
                 <ArrowRight size={16} />
               </Link>
             </Button>

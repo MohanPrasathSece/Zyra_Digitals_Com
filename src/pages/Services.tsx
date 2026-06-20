@@ -11,55 +11,55 @@ const Services = () => {
   const coreServices = [
     {
       icon: Palette,
-      title: "Brand Identity & Design",
-      description: "We shape how your brand looks, feels, and communicates through strategic design and messaging.",
-      features: ["Brand Positioning", "Logo & Visual Identity", "Brand Guidelines", "Tone of Voice"],
+      title: "Branding That Doesn't Suck",
+      description: "Visual identity, logos, and style guides that make your competitors extremely jealous.",
+      features: ["Vibe & Positioning", "Logo & Visual Identity", "Brand Style Guides", "Bold Messaging"],
     },
     {
       icon: Code,
-      title: "Website Development",
-      description: "Your website is where your brand comes alive. We build high-performance, conversion-focused websites.",
-      features: ["High-Performance", "Conversion-Focused", "SEO-Ready Structure", "Scalable Architecture"],
+      title: "Websites That Sell",
+      description: "Custom, ultra-fast sites engineered to turn casual visitors into paying customers. No lag allowed.",
+      features: ["Custom Code (No Templates)", "High Conversions", "SEO-Ready Launch", "Speed Optimized"],
     },
     {
       icon: Briefcase,
-      title: "UI/UX Design",
-      description: "Intuitive, engaging experiences that feel natural and drive conversions for your business.",
-      features: ["User Research", "Clean UI Design", "Conversion Layouts", "Brand Consistency"],
+      title: "Zero-Frustration UX",
+      description: "Websites so easy to use that checking out is a breeze. Zero friction, pure conversions.",
+      features: ["User Flow Maps", "Sleek Interfaces", "High-Converting Layouts", "Pixel-Perfect Designs"],
     },
     {
       icon: Search,
-      title: "SEO Optimization",
-      description: "Superior search engine optimization that elevates your brand's visibility and drives organic traffic.",
-      features: ["Advanced SEO Strategy", "Technical SEO Audit", "Content Optimization", "Performance Analytics"],
+      title: "Google Domination (SEO)",
+      description: "Rank high on Google so you stop wasting money chasing leads. They will find you on autopilot.",
+      features: ["Keyword Target Plans", "Technical Audits", "SEO-Optimized Layouts", "Google Analytics Setup"],
     },
     {
       icon: TrendingUp,
-      title: "Digital Growth & Analytics",
-      description: "Comprehensive digital ecosystem management for exponential brand growth and engagement.",
-      features: ["Social Media Profiles", "Google Analytics Setup", "Search Console Management", "Growth Analytics"],
+      title: "Real Analytics, No Fluff",
+      description: "We don't do 'likes' or 'impressions'. We set up systems to track what actually brings in cash.",
+      features: ["Conversion Track Setup", "Google Analytics 4", "Search Console Integrations", "Sales Tracking"],
     },
     {
       icon: Server,
-      title: "Hosting & Maintenance",
-      description: "We keep your brand running smoothly with reliable hosting and ongoing maintenance support.",
-      features: ["Reliable Hosting", "Security Updates", "Performance Monitoring", "Technical Support"],
+      title: "Bulletproof Hosting",
+      description: "We keep your site secure, online 24/7, and lightning-fast. No server headaches for you.",
+      features: ["Super-Fast Hosting", "SSL & Security Checks", "Routine Backups", "Real Human Tech Support"],
     }
   ];
 
   const additionalServices = [
-    { icon: Search, title: "Digital Products & Applications", description: "Technology that empowers your brand through custom web applications and business dashboards." },
-    { icon: Server, title: "Ongoing Support & Scaling", description: "We grow with your brand through website maintenance, performance optimization, and feature updates." },
-    { icon: RefreshCw, title: "Brand Evolution", description: "Modernize your brand experience with fresh design and improved digital functionality." },
-    { icon: Bot, title: "Marketing Tools Integration", description: "Connect your brand with powerful marketing tools and customer touchpoints." }
+    { icon: Search, title: "Web Apps & Dashboards", description: "Custom digital tools and dashboards built to automate your business operations." },
+    { icon: Server, title: "Long-Term Scaling", description: "We stay in your corner with regular updates, speed optimizations, and ongoing support." },
+    { icon: RefreshCw, title: "Brand Reboots", description: "Breathe new life into your outdated brand identity and clunky old website." },
+    { icon: Bot, title: "Tool Integrations", description: "Connect your site to marketing systems, Stripe, CRM tools, or anything else you need." }
   ];
 
   const processSteps = [
-    { step: "01", title: "Discover", description: "We understand your business, audience, and goals to shape your brand strategy." },
-    { step: "02", title: "Define", description: "We shape your brand strategy and digital direction for maximum impact." },
-    { step: "03", title: "Design", description: "We craft visually powerful and user-friendly experiences that connect emotionally." },
-    { step: "04", title: "Develop", description: "We bring ideas to life with clean, scalable code that powers your brand experience." },
-    { step: "05", title: "Deliver & Grow", description: "We launch, optimize, and scale your digital presence for long-term success." }
+    { step: "01", title: "The Brainstorm", description: "We map out your goals, target audience, and competitive edge. No generic plans." },
+    { step: "02", title: "The Blueprint", description: "We outline the exact visual direction and site structure so there are no surprises." },
+    { step: "03", title: "The Design", description: "We craft custom, stunning visuals and layouts that look incredibly premium." },
+    { step: "04", title: "The Code", description: "We write clean, lightweight code to build an ultra-fast website from scratch." },
+    { step: "05", title: "The Takeoff", description: "We launch your site, set up Google tracking, and watch your business scale." }
   ];
 
   const whatsappHref = `https://wa.me/9025421149?text=${encodeURIComponent("Hi, I'm interested in your web development services. Can we discuss my project?")}`;
@@ -134,23 +134,23 @@ const Services = () => {
           <div className="max-w-4xl mx-auto text-center">
             <div className="inline-flex items-center gap-2 bg-secondary/50 rounded-full px-4 py-2 mb-6">
               <Zap size={16} className="text-foreground" />
-              <span className="font-secondary text-sm text-foreground/80">Premium Web Development</span>
+              <span className="font-secondary text-sm text-foreground/80">Zero Corporate BS</span>
             </div>
             <h1 className="font-heading text-4xl sm:text-6xl lg:text-7xl font-bold text-foreground mb-6 leading-tight">
-              Services That <span className="text-gold">Transform</span> Ideas
+              Services That <span className="text-gold">Crush</span> The Norms
               <span className="sr-only"> - Branding, Digital Solutions & Web Development</span>
             </h1>
             <p className="font-secondary text-lg sm:text-xl text-muted-foreground leading-relaxed mb-8 max-w-3xl mx-auto">
-              From concept to launch, we create digital experiences that captivate your audience and drive real business results.
+              We design premium brands and code ultra-fast custom websites that get you actual clients. No slow templates, no endless meetings.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <Button variant="gold" size="lg" asChild>
                 <a href={whatsappHref} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
-                  Get Started <ArrowRight size={18} />
+                  Let's Talk Business <ArrowRight size={18} />
                 </a>
               </Button>
               <Button variant="ghost" size="lg" asChild>
-                <Link to="/portfolio">View Our Work</Link>
+                <Link to="/portfolio">See The Proof</Link>
               </Button>
             </div>
           </div>
@@ -163,11 +163,11 @@ const Services = () => {
           <div className="text-center mb-16">
             <div className="inline-flex items-center gap-2 bg-gold/10 rounded-full px-4 py-2 mb-6">
               <Palette size={16} className="text-gold" />
-              <span className="font-secondary text-sm text-gold font-medium">Our Expertise</span>
+              <span className="font-secondary text-sm text-gold font-medium">What We're Good At</span>
             </div>
             <h2 className="font-heading text-3xl sm:text-5xl font-bold text-foreground mb-4">Core Services</h2>
             <p className="font-secondary text-lg text-muted-foreground max-w-2xl mx-auto">
-              Comprehensive solutions designed to meet your unique business needs and goals.
+              No generic packages. Just high-performance systems custom-built for your business.
             </p>
           </div>
 
@@ -282,9 +282,9 @@ const Services = () => {
       <AnimatedSection animation="fade-up" className="py-20 bg-secondary/30">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="font-heading text-3xl sm:text-4xl font-bold text-foreground mb-4">Additional Services</h2>
+            <h2 className="font-heading text-3xl sm:text-4xl font-bold text-foreground mb-4">Extra Value Add-Ons</h2>
             <p className="font-secondary text-lg text-muted-foreground">
-              Enhance your website with these specialized services and ongoing support.
+              Boost your site with these specialized integrations and ongoing upgrades.
             </p>
           </div>
 
@@ -317,8 +317,8 @@ const Services = () => {
       <AnimatedSection animation="slide-up" className="py-20 bg-gradient-to-br from-background via-background to-secondary/20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto text-center mb-16">
-            <h2 className="font-heading text-3xl sm:text-4xl font-bold text-foreground mb-4">Why Choose Zyra Digitals?</h2>
-            <p className="font-secondary text-lg text-muted-foreground">Experience the difference with our unique approach</p>
+            <h2 className="font-heading text-3xl sm:text-4xl font-bold text-foreground mb-4">Why Zyra Digitals?</h2>
+            <p className="font-secondary text-lg text-muted-foreground">We skip the agencies' bullshit meetings and focus entirely on speed and performance.</p>
           </div>
 
           <div className="max-w-5xl mx-auto">
@@ -331,11 +331,11 @@ const Services = () => {
                     <div className="inline-flex items-center justify-center rounded-full bg-foreground/10 border-2 border-foreground/20 w-16 h-16 mb-6 group-hover:border-foreground/40 transition-colors duration-300">
                       <Zap size={28} className="text-foreground" />
                     </div>
-                    <h3 className="font-subheading text-xl font-semibold text-foreground mb-3">Fast Delivery</h3>
-                    <p className="font-secondary text-muted-foreground mb-4">Most projects completed within 2 weeks or less without compromising quality.</p>
+                    <h3 className="font-subheading text-xl font-semibold text-foreground mb-3">Speed That Kills</h3>
+                    <p className="font-secondary text-muted-foreground mb-4">Most custom projects launched in 2 to 4 weeks. No dragging feet, no delays.</p>
                     <div className="flex items-center gap-2 text-sm text-foreground/60">
                       <div className="w-2 h-2 bg-foreground/40 rounded-full"></div>
-                      <span>Lightning Fast Process</span>
+                      <span>Zero Lazy Templates</span>
                     </div>
                   </div>
                 </div>
@@ -349,11 +349,11 @@ const Services = () => {
                     <div className="inline-flex items-center justify-center rounded-full bg-foreground/10 border-2 border-foreground/20 w-16 h-16 mb-6 group-hover:border-foreground/40 transition-colors duration-300">
                       <Palette size={28} className="text-foreground" />
                     </div>
-                    <h3 className="font-subheading text-xl font-semibold text-foreground mb-3">Custom Design</h3>
-                    <p className="font-secondary text-muted-foreground mb-4">Every website is uniquely crafted to match your brand and vision.</p>
+                    <h3 className="font-subheading text-xl font-semibold text-foreground mb-3">Pure Custom Builds</h3>
+                    <p className="font-secondary text-muted-foreground mb-4">Built completely from scratch. Sleek, premium layout designed solely for your brand vibe.</p>
                     <div className="flex items-center gap-2 text-sm text-foreground/60">
                       <div className="w-2 h-2 bg-foreground/40 rounded-full"></div>
-                      <span>Tailored Solutions</span>
+                      <span>Original Code Only</span>
                     </div>
                   </div>
                 </div>
@@ -367,11 +367,11 @@ const Services = () => {
                     <div className="inline-flex items-center justify-center rounded-full bg-foreground/10 border-2 border-foreground/20 w-16 h-16 mb-6 group-hover:border-foreground/40 transition-colors duration-300">
                       <Shield size={28} className="text-foreground" />
                     </div>
-                    <h3 className="font-subheading text-xl font-semibold text-foreground mb-3">Ongoing Support</h3>
-                    <p className="font-secondary text-muted-foreground mb-4">30-day support included with maintenance packages available.</p>
+                    <h3 className="font-subheading text-xl font-semibold text-foreground mb-3">We Don't Ghost</h3>
+                    <p className="font-secondary text-muted-foreground mb-4">Get 30 days of free post-launch support. Ongoing scaling and maintenance options available.</p>
                     <div className="flex items-center gap-2 text-sm text-foreground/60">
                       <div className="w-2 h-2 bg-foreground/40 rounded-full"></div>
-                      <span>Reliable Assistance</span>
+                      <span>Reliable Partnership</span>
                     </div>
                   </div>
                 </div>
@@ -386,21 +386,21 @@ const Services = () => {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="max-w-4xl mx-auto">
             <h2 className="font-heading text-3xl sm:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-              Ready to Transform Your
-              <span className="block">Digital Presence?</span>
+              Ready to Crush Your
+              <span className="block">Competition?</span>
             </h2>
             <p className="font-secondary text-lg sm:text-xl text-gray-600 mb-12 max-w-3xl mx-auto leading-relaxed">
-              Let's discuss your project and create a website that drives real results for your business.
+              Stop settling for slow sites and boring templates. Let's build a digital presence that actually drives business growth.
             </p>
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <Button variant="gold" size="lg" asChild>
                 <a href={whatsappHref} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
-                  Start Your Project <ArrowRight size={18} />
+                  Let's Talk Business <ArrowRight size={18} />
                 </a>
               </Button>
               <Button variant="outline" size="lg" asChild className="border-black text-black hover:bg-black hover:text-white px-8 py-3 rounded-lg transition-colors duration-200">
-                <Link to="/portfolio">View Portfolio</Link>
+                <Link to="/portfolio">Show Me Proof</Link>
               </Button>
             </div>
           </div>
