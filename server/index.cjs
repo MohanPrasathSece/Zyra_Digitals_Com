@@ -13,10 +13,16 @@ app.use(express.json());
 
 // Email Transporter (Configure with your email service)
 const transporter = nodemailer.createTransport({
-    service: 'gmail', // Or your preferred service
+    host: 'smtp.gmail.com',
+    port: 465,
+    secure: true, // Use SSL
     auth: {
         user: process.env.EMAIL_USER,
         pass: process.env.EMAIL_PASS,
+    },
+    tls: {
+        // Bypass self-signed certificate errors (e.g., behind corporate proxy/VPN)
+        rejectUnauthorized: false,
     },
 });
 
