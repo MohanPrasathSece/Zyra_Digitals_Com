@@ -1,3 +1,5 @@
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0'; // Bypass self-signed cert issues
+
 const express = require('express');
 const nodemailer = require('nodemailer');
 const cors = require('cors');
@@ -11,20 +13,21 @@ const PORT = process.env.PORT || 5000;
 app.use(cors());
 app.use(express.json());
 
-// Email Transporter (Configure with your email service)
-const transporter = nodemailer.createTransport({
-    host: 'smtp.gmail.com',
-    port: 465,
-    secure: true, // Use SSL
-    auth: {
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASS,
-    },
-    tls: {
-        // Bypass self-signed certificate errors (e.g., behind corporate proxy/VPN)
-        rejectUnauthorized: false,
-    },
-});
+// Email Transporter — created lazily per request so .env vars are always fresh
+function createTransporter() {
+    return nodemailer.createTransport({
+        host: 'smtp.gmail.com',
+        port: 465,
+        secure: true, // Use SSL
+        auth: {
+            user: process.env.EMAIL_USER,
+            pass: process.env.EMAIL_PASS,
+        },
+        tls: {
+            rejectUnauthorized: false,
+        },
+    });
+}
 
 // API Routes
 app.post('/api/contact', async (req, res) => {
@@ -35,6 +38,8 @@ app.post('/api/contact', async (req, res) => {
     }
 
     try {
+        const transporter = createTransporter();
+
         // 1. Send Email to Admin
         const adminMailOptions = {
             from: `"${name}" <${email}>`, // Show sender's name
@@ -93,6 +98,16 @@ if (process.env.NODE_ENV === 'production') {
     });
 }
 
-app.listen(PORT, () => {
+const server = app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
 });
+
+server.on('error', (err) => {
+    if (err.code === 'EADDRINUSE') {
+        console.error(`\n❌ Port ${PORT} is already in use.\n   Run this to free it: npx kill-port ${PORT}\n   Then restart: npm run dev\n`);
+        process.exit(1);
+    } else {
+        throw err;
+    }
+});
+

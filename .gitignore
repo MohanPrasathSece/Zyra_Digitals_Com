@@ -22,3 +22,8 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Environment variables (sensitive credentials — never commit)
+.env
+.env.local
+.env.*.local
