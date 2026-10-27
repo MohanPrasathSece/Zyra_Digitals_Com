@@ -35,10 +35,10 @@ const Portfolio = (): JSX.Element => {
     },
     {
       quote:
-        "AmzCoz needed a partner who could show our Amazon growth story with proof and polish. Zyra Digitals nailed the messaging and gave us a lead magnet that converts.",
-      author: "Priya Deshpande",
-      role: "Co-Founder, AmzCoz",
-      avatarInitial: "P",
+        "Apex RevOps needed a platform that truly matched our B2B sales automation capabilities. Zyra Digitals delivered a high-converting website with flawless UX and rapid lead capture.",
+      author: "Vikram Sharma",
+      role: "Founder, Apex RevOps",
+      avatarInitial: "V",
     },
     {
       quote:
@@ -129,21 +129,19 @@ const Portfolio = (): JSX.Element => {
       color: "#f5f6f8"
     },
     {
-      title: "AmzCoz",
-      category: "E-Commerce Growth",
-      image: "/images/Portfolio_projects/amzcoz/amzcoz.png",
+      title: "Apex RevOps",
+      category: "B2B Lead Gen & Sales Automation",
+      image: "/images/Portfolio_projects/Apex RevOps/Screenshot 2026-10-06 143805.png",
       images: [
-        "/images/Portfolio_projects/amzcoz/amzcoz.png",
-        "/images/Portfolio_projects/amzcoz/image.png",
-        "/images/Portfolio_projects/amzcoz/image copy.png",
-        "/images/Portfolio_projects/amzcoz/image copy 2.png",
-        "/images/Portfolio_projects/amzcoz/image copy 3.png",
-        "/images/Portfolio_projects/amzcoz/image copy 4.png"
+        "/images/Portfolio_projects/Apex RevOps/Screenshot 2026-10-06 143805.png",
+        "/images/Portfolio_projects/Apex RevOps/Screenshot 2026-10-06 143815.png",
+        "/images/Portfolio_projects/Apex RevOps/Screenshot 2026-10-06 143851.png",
+        "/images/Portfolio_projects/Apex RevOps/Screenshot 2026-10-06 143908.png"
       ],
       description:
-        "An Amazon growth and e-commerce success partner offering end-to-end account management, advertising, and strategic support for brands across the globe.",
-      technologies: ["ReactJS", "Tailwind CSS"],
-      link: "https://amzcoz.com",
+        "A high-converting B2B lead generation and sales automation agency for SaaS, IT, and consulting firms. Apex RevOps builds complete outbound engines—combining targeted lead generation, cold email, LinkedIn outreach, and AI CRM automation to book qualified sales meetings.",
+      technologies: ["ReactJS", "Tailwind CSS", "Sales Automation"],
+      link: "https://apexrevops.com",
       color: "#f5f5f5"
     },
     {
@@ -185,13 +183,12 @@ const Portfolio = (): JSX.Element => {
     {
       title: "Launch & Close",
       category: "B2B SaaS & Growth",
-      image: "/images/Portfolio_projects/launch&close/image.png",
+      image: "/images/Portfolio_projects/launch&close/Screenshot 2026-10-06 141349.png",
       images: [
-        "/images/Portfolio_projects/launch&close/image.png",
-        "/images/Portfolio_projects/launch&close/image copy.png",
-        "/images/Portfolio_projects/launch&close/image copy 2.png",
-        "/images/Portfolio_projects/launch&close/image copy 3.png",
-        "/images/Portfolio_projects/launch&close/image copy 4.png"
+        "/images/Portfolio_projects/launch&close/Screenshot 2026-10-06 141349.png",
+        "/images/Portfolio_projects/launch&close/Screenshot 2026-10-06 141419.png",
+        "/images/Portfolio_projects/launch&close/Screenshot 2026-10-06 141445.png",
+        "/images/Portfolio_projects/launch&close/Screenshot 2026-10-06 141456.png"
       ],
       description:
         "A full-stack growth partner for startups and SMBs, bridging the gap between strategy and execution with senior revenue operators who build, execute, and transfer complete sales systems.",
