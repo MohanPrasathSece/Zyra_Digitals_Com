@@ -15,13 +15,14 @@ app.use(express.json());
 
 // Email Transporter — created lazily per request so .env vars are always fresh
 function createTransporter() {
+    require('dotenv').config();
     return nodemailer.createTransport({
         host: 'smtp.gmail.com',
         port: 465,
         secure: true, // Use SSL
         auth: {
-            user: process.env.EMAIL_USER,
-            pass: process.env.EMAIL_PASS,
+            user: (process.env.EMAIL_USER || '').trim(),
+            pass: (process.env.EMAIL_PASS || '').trim(),
         },
         tls: {
             rejectUnauthorized: false,
